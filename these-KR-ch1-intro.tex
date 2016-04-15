@@ -1,0 +1,310 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\label{ChIntro}
+
+\vspace{-2mm}
+
+Les capteurs et actionneurs sans-fil (\lang{``Wireless Sensors and
+Actuators''})~--- qui sont l'objet même des travaux de cette thèse~---
+sont en fait des <<~nano-ordinateurs~>> embarqués, regroupant unité
+centrale, interface réseau sans-fil (radio), et divers périphériques
+leur permettant d'interagir avec leur environnement (capteurs et
+actionneurs), sur une carte électronique dont la taille ne dépasse
+en général pas celle d'une carte de crédit.
+
+Une de leur spécificités majeures est de dépendre de batteries (piles
+ou autres) pour leur alimentation. Cette batterie étant parfois difficile
+voire impossible à changer, ces nano-ordinateurs doivent être conçus
+et programmés pour \emph{minimiser au maximum leur consommation d'énergie}~:
+leur durée de fonctionnement, et parfois même leur durée de vie, en dépend.
+
+Ces nano-ordinateurs sont couramment appelés \nom{capteurs sans-fil}~---
+les appareils équipés d'actionneurs étant nettement moins nombreux et
+utilisés~---, \nom{n{\oe}uds} ou par le terme anglo-saxon
+\emph{\lang{``mote''}}.
+
+Le terme de <<~noeud~>> est ici particulièrement révélateur, car ces
+appareils sont par nature destinés à fonctionner en réseau, via le
+médium radio. Ce sont ces réseaux de noeuds qui sont appelés
+\nom{Réseaux de Capteurs Sans-Fil} (\emph{``Wireless Sensor Networks''}
+ou \nom{WSN}, selon le terme anglo-saxon).
+
+L'architecture et le fonctionnement de ces capteurs sans-fil et de leurs
+réseaux, et les défis qu'ils posent, seront définis et expliqués de façon
+détaillée en section \vref{SubsecDefWSN} du prochain chapitre.
+
+Ces réseaux de capteurs sans-fil, en s'interconnectant entre eux
+et avec les réseaux globaux (WAN~: \lang{Wide Area Network}), ont permis
+l'apparition de la notion plus récente d'\nom{Internet des Objets}
+(\nom{IoT}~: \lang{Internet of Things}), <<~organisme~>> dont ils
+constituent les cellules.
+
+Il s'agit à l'heure actuelle d'un sujet de recherche et de développement
+extrêmement vaste, actif et prometteur. Le développement rapide de cet IoT
+permet l'apparition et la mise en place d'une multitude d'applications
+nouvelles.
+
+Ces applications, de plus en plus variées, riches et complexes, augmentent
+encore l'intérêt de plates-formes logicielles (c'est-à-dire de
+\nom{systèmes d'exploitation}, en anglais \lang{``Operating System''}~:
+\nom{OS}) fiables, fonctionnelles, performantes et adaptées aux noeuds
+de ces WSN constituant le fondement de l'IoT.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+Les domaines d'application des réseaux de capteurs sans-fil, et par
+extension de l'Internet des Objets, sont extrêmement étendus.
+Deux livres \cite{LivreDargie2010} \cite{LivreAkyildiz2010}
+détaillent différentes applications déjà existantes et exploitées.
+
+On peut notamment citer~:
+
+\begin{itemize}
+
+\item des applications militaires,
+
+\item des applications industrielles,
+
+\item des applications environnementales,
+
+\item des applications domotiques,
+
+\item des applications à la santé.
+
+\end{itemize}
+
+Ces deux derniers domaines d'application des WSN sont ceux auxquels nous
+nous intéressons spécifiquement dans la présente thèse.
+
+Nous disposons notamment, au LORIA~/ INRIA Nancy Grand-Est,
+d'un projet d'appartement intelligent pour l'assistance à la personne
+\cite{AppartIntelligent}. Ce projet, constamment en cours de développement
+et de perfectionnement, est utilisé de façon intensive par les différentes
+équipes de recherche du site, pour le développement et le test
+d'applications diverses, aussi bien académiques qu'industrielles,
+principalement pour l'aide au maintien à domicile des personnes âgées
+et~/ ou dépendantes. Ce projet relève à la fois de l'application
+domotique et de l'application de santé, tout comme le projet LAR
+que nous allons détailler dans le chapitre \ref{ChCtxProb}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+Comme la plupart des systèmes informatiques connectés, les capteurs sans-fil
+ont recours à des piles protocolaires pour gérer l'envoi et la réception de
+données. Dans leur cas, il s'agit d'émettre et de recevoir ces données
+sous forme de trames transmises sur le médium radio~--- par définition peu
+fiable, et souvent sujet à des perturbations. La plupart des WSN actuels
+accèdent au médium radio selon le standard IEEE 802.15.4
+\cite{IEEE802154-2011}.
+
+Pour pallier les problèmes liés à l'instabilité de ce médium radio, de
+nombreux protocoles MAC (\lang{``Media Access Control''}) ont été
+développés. Le protocole 802.15.4 en propose lui-même deux versions,
+mais leurs limitations ont poussé la communauté académique et industrielle
+à développer de nombreux protocoles alternatifs, basés sur des principes
+et des techniques différents.
+
+\medskip
+
+Pour faciliter la programmation et l'exploitation de ces systèmes spéciaux
+que sont les capteurs sans-fil, il existe des systèmes d'exploitation
+spécifiques, prenant en compte leurs spécificités~: capacités très limitées,
+fonctionnement sur batterie faisant de la consommation énergétique un
+enjeu majeur, communication par radio. Nombre de ces plates-formes
+logicielles dédiées ont été conçues et sont exploitées à l'heure actuelle,
+mais les plus utilisés au moment où nous écrivons ces lignes sont
+Tiny OS \cite{TinyOS} et surtout Contiki OS \cite{ContikiOS}.
+Ces plates-formes logicielles sont fournies avec leurs propres piles
+réseau intégrées, qui sont donc la cheville ouvrière du fonctionnement
+concret des communications sur les réseaux de capteurs sans-fil.
+
+\newpage
+
+Si de nombreux travaux de recherche ont, comme nous l'avons dit, été
+menés pour développer des protocoles MAC de plus en plus performants
+pour exploiter au mieux le médium radio et contourner ses limitations,
+tout en préservant au maximum les ressources énergétiques des capteurs
+sans-fil, les résultats de ces travaux n'ont malheureusement guère
+été concrètement implantés et diffusés à l'heure actuelle dans les piles
+réseaux des systèmes d'exploitation spécialisés~: celles-ci ne comportent
+le plus souvent que le protocole MAC du standard IEEE 802.15.4, plus
+éventuellement quelques protocoles simples et~/ ou anciens ne représentant
+nullement l'état de l'art en la matière.
+
+La seule exception notable à cette situation est la présence en standard
+du protocole ContikiMAC \cite{ContikiMAC} dans la pile réseau des versions
+récentes Contiki OS. Ce protocole, s'il est récent et performant, repose
+toutefois sur des principes de fonctionnement somme toute classiques
+(bien qu'optimisés) impliquant certaines limites. De nombreux travaux
+d'implantation de protocoles différents~--- notamment sur leurs principes
+de fonctionnement~--- restent encore à entreprendre.
+
+Ainsi, à l'heure actuelle, les couches basses des piles réseau spécialisées
+pour les capteurs sans-fil, notamment celles intégrées aux plates-formes
+logicielles dédiées, constituent un <<~goulot d'étranglement~>> pour la
+performance des communications entre \lang{motes}, les couches MAC (et
+plus généralement les couches basses) semblant avoir été peu prioritaires
+dans les efforts de développement et d'implantation des piles réseau
+des OS pour WSN.
+
+\medskip
+
+\emph{Cette thèse a ainsi pour but de permettre d'obtenir des améliorations
+significatives pour ces couches basses, tant sur le plan des performances
+que de l'optimisation de la consommation énergétique, via un effort de
+recherche et d'implantation des piles réseau dédiées, notamment en exploitant
+au mieux les fonctionnalités offertes par les plates-formes logicielles
+spécialisées dans les capteurs sans-fil.}
+
+Si les OS les plus utilisés que sont Tiny OS \cite{TinyOS} et Contiki OS
+\cite{ContikiOS} n'offrent pas les fonctionnalités nécessaires, d'autres
+plates-formes logicielles moins répandues, mais plus performantes et récentes,
+offrent notamment des mécanismes avancés de gestion des interruptions,
+un modèle multitâche préemptif, et des fonctionnalités temps-réel (notamment
+en exposant au mieux~--- via une API adaptée~--- les \lang{timers} matériels
+présents dans les microntrôleurs équipant les capteurs sans-fil).
+Ces fonctionnalités sont notamment très utiles pour améliorer la qualité
+de service (QdS) des réseaux. Parmi les systèmes pour capteurs sans-fil
+offrant de telles capacités, on pourra entre autres citer Nano-RK
+\cite{NanoRK} ou RIOT OS \cite{RIOT}.
+
+Un autre mécanisme lié à l'OS particulièrement intéressant pour l'économie
+d'énergie est la présence d'un noyau fonctionnant en mode \lang{``tickless''},
+c'est-à-dire permettant de ne faire fonctionner l'appareil que quand cela
+est strictement nécessaire. 
+
+\emph{Nous nous proposons d'exploiter toutes ces fonctionnalités avancées
+offertes par ces OS dédiés pour tenter d'implanter l'état de l'art en matière
+de protocoles MAC, et ainsi obtenir de meilleurs résultats en termes de
+performances de communication et d'économies d'énergie.}
+
+\medskip
+
+Notons que pour des raisons juridiques aussi bien que techniques~---
+possibilité de modifier et d'améliorer le c{\oe}ur et les différents
+composants du système selon nos besoins~--- nous n'envisagerons dans
+la présente thèse uniquement l'utilisation des systèmes d'exploitation~---
+et plus généralement des logiciels~--- à licence libre et \lang{open
+source}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Objectifs}
+
+Les travaux de la présente thèse ont \emph{les principaux objectifs}
+suivants~:
+
+\begin{enumerate}
+
+\item Un \emph{état de l'art des différents protocoles MAC créés par la
+recherche} académique ou industrielle, et surtout un passage en \emph{revue
+des principaux systèmes d'exploitation utilisés dans le cadre des réseaux
+de capteurs sans-fil}, en analysant leurs fonctionnalités, déterminant ainsi
+\emph{quels sont les mieux adaptés au développement de couches basses}
+(notamment MAC) avancées et performantes.
+
+\item Le \emph{choix de la plate-forme logicielle la mieux adaptée} pour
+le développement de ces couches basses, avec notamment une \emph{analyse
+critique des piles réseau~--- notamment de l'API et des drivers radio---
+de ces plates-formes spécialisées (Contiki et RIOT OS)}.
+
+\item Une \emph{implantation du protocole S-CoSenS sur le système RIOT OS}~---
+s'inscrivant dans un effort plus global destiné à \emph{fournir une couche
+MAC performante à la pile réseau de cette plate-forme logicielle}~--- suivi
+d'une \emph{comparaison avec l'implantation standard de ContikiMAC} sur
+Contiki OS, notamment en présence d'un trafic réseau intense~; et enfin
+la \emph{proposition d'idées d'améliorations algorithmiques à apporter
+aux protocoles MAC}.
+
+\item La \emph{validation sur plates-formes réelles} des résultats de nos
+expérimentations~--- effectuées jusqu'alors par simulation~/ émulation~---
+suite à la \emph{découverte d'un problème d'inexactitude temporelle dans
+l'outil de simulation Cooja~/ MSPSim}, avec une analyse des problèmes
+rencontrés, et la fourniture d'autant de détails techniques et des pistes
+de résolution possibles pour aider à la résolution ultérieure des
+difficultés rencontrées.
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Structure}
+
+Le présent manuscrit de thèse est organisé de la façon suivante~:
+
+\begin{itemize}
+
+\item Après ce présent chapitre d'introduction, le chapitre
+\vref{ChCtxProb} donne les définitions techniques nécessaires 
+à la bonne compréhension du sujet, développe les différentes applications
+possibles des WSN et de l'IoT, puis présente le contexte de la thèse,
+et enfin la problématique que celle-ci se propose de résoudre, en commençant
+à détailler nos pistes de travail.
+
+\item Le chapitre \vref{ChEtatArt} présente l'état de l'art sur le
+protocole IEEE 802.15.4 sur lequel reposent les réseaux de capteurs sans-fil
+actuels~; une présentation des différents axes de recherche et des exemples
+significatifs de protocoles MAC développés par la communauté pour suppléer
+aux limitations du protocole MAC du standard 802.15.4~; et enfin, nous
+faisons une première contribution sous la forme d'une revue
+(\lang{``survey''}) des systèmes d'exploitation (OS) spécialisés dans
+le domaine des WSN, en détaillant sucessivement leurs points forts et
+leurs limitations, et par là-même leur adaptation au développement de
+protocoles MAC avancés et performants.
+
+\item Le chapitre \vref{ChPFLogicielles} détaille notre recherche
+d'une plate-forme logicielle (OS) adaptée à nos travaux de recherche sur
+les protocoles MAC à hautes performances, montre nos contributions au
+développement de la plate-forme performante et novatrice (RIOT OS) que
+nous avons choisie, et propose dans ce cadre une étude critique de sa
+nouvelle pile réseau de RIOT OS (<<~gnrc~>>).
+
+\item Le chapitre \vref{ChProtocolesMAC} montre les résultats de nos
+premières expériences en comparant les implantations d'un protocole
+hybride, S-CoSenS, mis au point au sein de notre équipe, à celle
+du protocole ContikiMAC, référence largement utilisée dans la communauté.
+Ces comparaisons montrent en particulier le comportement de ces deux
+implantations de protocoles face à une montée en charge intensive
+du trafic réseau. Nous proposons également plusieurs techniques
+susceptibles d'améliorer la robustesse des protocoles MAC~/ RDC,
+notamment en complétant l'interface avec la couche 1 (pilotes
+des émetteurs~/ récepteurs radio) afin d'influer dynamiquement
+sur des paramètres liés à l'écoute du médium.
+
+\item Le chapitre \vref{ChValidation} présente tout d'abord les
+inexactitudes d'ordre temporel que nous avons découvertes dans les
+résultats fournis par Cooja, l'un des simulateurs de WSN les plus utilisés~;
+nous y montrons nos contributions sous la forme d'une analyse des
+limitations de ce dernier comme outil d'évaluation de performances, et des
+conséquences possibles sur la validité et la justesse des travaux basés
+sur ces simulations (y compris nos propres travaux)~; nous fournissons
+enfin des pistes sérieuses quant aux causes du problème, et aux moyens
+de le contourner ou d'y remédier.
+Sont ensuite détaillés les travaux de validation prévus sur matériel
+pour valider de façon indiscutable nos précédentes expériences, ainsi
+que pour tester la montée en charge de S-CoSenS sur un réseau de forte
+taille. Nous continuons en décrivant nos premières expériences sur
+la plate-forme matérielle de test choisie, le \lang{testbed} IoT-LAB.
+Nous détaillons enfin les problèmes techniques nous ayant empêché de
+terminer de mener à bien ces travaux, en tentant de fournir le maximum
+de pistes techniques pour faciliter leur résolution future.
+
+\item Enfin, le chapitre \vref{ChConcluPerspec} termine ce
+manuscrit de thèse en présentant nos conclusions générales, et
+en discutant des perspectives pouvant faire suite à nos travaux.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                    FIN DU CHAPITRE "INTRODUCTION"                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

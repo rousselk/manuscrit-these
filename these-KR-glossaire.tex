@@ -1,0 +1,540 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Glossaire}
+\label{AnxGlossaire}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{0--9}
+
+\begin{description}
+
+\item[6LoWPAN] \lang{``IPv6 over Low-Power Wireless
+                       Personal Area Network''} \\
+Acronyme anglo-saxon, désignant une version <<~allégée~>> du protocole IP
+version 6, adaptée aux réseaux de capteurs sans-fil, notamment aux
+ressources limitées des matériels (n{\oe}uds) les composant.
+
+\item[802.15.4] \ \\
+Terme raccourci désignant le standard IEEE 802.15.4 (et en général ses
+différentes annexes et extensions). Il définit une technologie sur laquelle
+repose de nombreux réseaux de capteurs sans-fil, notamment ceux auxquels
+les travaux de la présente thèse se sont intéressés.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{A}
+
+\begin{description}
+
+\item[Actuator] \ \\
+Terme anglo-saxon, désignant en français un \nom{actionneur} capable
+d'influer sur un phénomène physique environnemental. La présence de tels
+actionneurs sur un n{\oe}ud équipe d'un émetteur~/ récepteur radio est
+ce qui le fait désigner sous le terme de <<~actionneur sans-fil~>>
+(\lang{``Wireless Actuator''} en anglais). Les n{\oe}uds équipés
+d'actionneurs sont sauf exception également équipés de capteurs, ce qui fait
+que le terme de <<~capteur sans-fil~>> (\lang{``Wireless Sensor''}) reste
+presque toujours utilisé, même en présence d'actionneurs.
+
+\item[API] \lang{``Application Programming Interface''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Interface de
+Programmation d'Applications~>>}. Désigne l'ensemble des fonctions, types,
+classes, etc., offerts aux développeurs pour construire leurs applications
+au sein d'un environnement logiciel particulier (par exemple~: système
+d'exploitation, ou bibliothèque offrant un jeu de fonctionnalités).
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{B}
+
+\begin{description}
+
+\item[BAN] \lang{``Body Area Network''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Réseau
+d'\'Etendue Corporelle~>>}. Désigne un type particulier de PAN, conçu pour
+regrouper des capteurs et actionneurs sur le corps d'un individu.
+Ce terme possède~--- notamment dans le cadre de la présente thèse~--- une
+forte connotation médicale et d'aide à la personne (malade, agée,
+dépendante, etc.).
+
+\item[Beacon] \ \\
+Terme anglo-saxon, se traduisant en français par \nom{<<~balise~>>}.
+Désigne une trame ne contenant pas de données applicatives
+(\lang{``payload''}), mais servant à la synchronisation des différents
+n{\oe}uds d'un réseau de capteurs sans-fil. De telles <<~balises~>> ou
+\lang{``beacons''} sont notamment utilisées par les protocoles MAC~/ RDC
+S-CoSenS et le protocole standard IEEE 802.15.4 (dans un de ses deux modes
+de fonctionnement).
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{C}
+
+\begin{description}
+
+\item[CCA] \lang{``Clear Channel Assessment''} \\
+Acronyme anglo-saxon, désignant la procédure consistant à vérifier la
+disponibilité du médium physique, juste avant l'envoi d'un message.
+
+\item[Contiki (OS)] \ \\
+L'une des plates-formes logicielles spécialisées parmi les plus utilisées
+dans le domaine des WSN, étant actuellement la référence de fait dans le
+domaine. Elle a fait l'objet de plusieurs travaux et études
+dans le présente thèse.
+
+\item[ContikiMAC] \ \\
+Protocole MAC~/ RDC, conçu par le créateur de Contiki OS, et désormais
+utilisé par défaut avec ce dernier depuis plusieurs années. Il s'agit
+d'un protocole asynchrone de type LPL, ayant fait l'objet de plusieurs
+optimisations conceptuelles et implantatoires. Compte-tenu de l'influence
+majeure de Contiki OS dans le domaine des WSN, ce protocole est devenu une
+référence par défaut dans le domaine, face à laquelle il est courant de
+tester les nouveaux protocoles MAC~/RDC.
+
+\item[CoSenS] \ \\
+Protocole MAC, conçu au sein de notre équipe de recherche (Madynes).
+Est la base et le précurseur de S-CoSenS, lequel en est une extension
+majeure ajoutant la gestion du RDC.
+
+\item[CPU] \lang{``Central Processing Unit''} \\
+Acronyme anglo-saxon, désignant un \nom{c{\oe}ur de microprocesseur},
+autour duquel (ou desquels) est construit tout système informatique.
+
+Ces c{\oe}urs CPU peuvent être associés avec divers périphériques au
+sein d'un même circuit, comme un microcontrôleur.
+
+\item[CSMA/CA] \lang{``Carrier Sense Multiple Access
+                       with Collision Avoidance''} \\
+Acronyme anglo-saxon, désignant une procédure, basée sur la contention,
+destinée à gérer l'envoi correct d'un paquet de données sur le médium
+radio.
+
+À noter que cette procédure, utilisée par la couche MAC standard du
+standard IEEE 802.15.4, est différente d'une procedure homonyme utilisée
+dans le standard WiFi (IEEE 802.11).
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{D}
+
+\begin{description}
+
+\item[Driver] \ \\
+Terme anglo-saxon, se traduisant en français par \nom{<<~pilote~>>}.
+\'Element logiciel, en général de bas niveau, permettant d'accéder aux
+fonctionnalités d'un matériel donné (comme un périphérique).
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{E}
+
+\begin{description}
+
+\item[ED] \lang{``Energy Detection''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Détection
+d'énergie~>>}. Mesure chiffrée de la puissance du signal sur le médium
+radio, notamment par rapport au bruit de fond. Sert souvent à déterminer
+la disponibilité ou non de ce médium, lors d'une procédure de CCA.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{F}
+
+\begin{description}
+
+\item[FDMA] \lang{``Frequency Division Multiple Access''} \\
+Acronyme anglo-saxon, désignant une procédure, basée sur le multiplexage
+fréquentiel, destinée à gérer l'envoi correct d'un paquet de données sur
+le médium radio.
+
+Employée par de nombreux protocoles MAC alternatifs, conçus par la
+communauté académique ou industrielle, mais aussi par l'amendement
+802.15.4e du standard IEEE.
+
+\item[FFD] \lang{``Full Function Device''} \\
+Acronyme anglo-saxon, issu du standard IEEE 802.15.4, désignant un matériel
+suffisamment puissant pour jouer le rôle de coordinateur de PAN~--- et par
+extension, bien souvent de routeur dans les couches supérieures de la pile
+protocolaire, voire même assurer d'autres fonctions de plus haut niveau
+comme par exemple des opérations de calcul. Ce terme est opposé à celui
+de RFD.
+
+\item[FPGA] \lang{``Field Programmable Gate Array''} \\
+Acronyme anglo-saxon, désignant un circuit intégré dont l'organisation
+interne, et donc les fonctionnalités, peuvent être programmées et
+reprogrammées arbitrairement selon les besoins. Cela en fait de formidables
+outils de prototypage matériel, mais aussi, avec l'augmentation de leur
+puissance et la baisse de leur prix, de futures alternatives potentielles
+aux circuits <<~dédiés~>> (comme les MCU par exemple) pour construire des
+systèmes électroniques et informatiques, comme les n{\oe}uds de réseaux
+de capteurs sans-fil.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{G}
+
+\begin{description}
+
+\item[GPIO] \lang{``General Purpose Input/Output''} \\
+Acronyme anglo-saxon, désignant une entrée~/ sortie à vocation généraliste.
+Dans notre contexte, il s'agit d'une broche de MCU jouant ce rôle d'entrée~/
+sortie librement utilisable et programmable.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{H}
+
+\begin{description}
+
+\item[HAL] \lang{``Hardware Abstraction Layer''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Couche
+d'Abstraction Matérielle~>>}. Désigne le regroupement des éléments logiciels
+dépendants du matériel (en général les pilotes ou \lang{``drivers''}) dans
+une couche clairement séparée, permettant au reste du logiciel~--- en
+général un système d'exploitation, ou un exécutif comparable~--- d'être
+conçu de façon générique et donc plus facilement portable.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{I}
+
+\begin{description}
+
+\item[I\textsuperscript{2}C] \lang{``Inter-Integrated Circuit''} \\
+Acronyme anglo-saxon, désignant une technologie de bus série, reliant des
+circuits au sein d'un même appareil électronique (parfois même au sein
+d'un même microcontrôleur).
+
+\item[IoT] \lang{``Internet of Things''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Internet
+des Objets~>>}. Ce terme désigne la possibilité des réseaux de capteurs
+sans-fil de s'interconnecter entre eux et avec Internet, par l'utilisation
+du protocole IP (\lang{``Internet Protocol''}), notamment en version 6
+(IPv6), comme couche 3 de leur pile protocolaire.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{J}
+
+\begin{description}
+
+\item[JTAG] \lang{``Joint Test Action Group''} \\
+Acronyme anglo-saxon, désignant la norme IEEE 1149.1. Désigne (par abus de
+langage) dans le présent manuscrit, la possibilité d'effectuer du déboguage
+au sein du matériel lui-même. Dans notre contexte, il s'agit de déboguer
+les programmes téléchargés au sein des n{\oe}uds de réseaux de capteurs
+sans-fil \emph{lors} de leur exécution, ce qui facilité grandement la
+compréhension et la résolution de bogues et autres problèmes.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{L}
+
+\begin{description}
+
+\item[LAR] \lang{``Living Assistant Robot''} \\
+Acronyme désignant le projet au sein duquel s'est déroulé cette thèse.
+
+\item[LPL] \lang{``Low-Power Listening''} \\
+Acronyme anglo-saxon, désignant une famille de protocoles MAC~/ RDC
+aynchrones, basés sur la contention, où l'initiative de la transmission
+des données est laissée aux n{\oe}uds émetteurs.
+
+\item[LPP] \lang{``Low-Power Probing''} \\
+Acronyme anglo-saxon, désignant une famille de protocoles MAC~/ RDC
+aynchrones, basés sur la contention, où l'initiative de la transmission
+des données est laissée aux n{\oe}uds receveurs, via des mécanismes
+de transmissions régulières de <<~balises~>> afin de mieux économiser
+l'énergie et exploiter la bande passante du médium radio.
+
+\item[LQI] \lang{``Link Quality Indicator''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Qualité de
+Liaison~>>}. Mesure chiffrée de la qualité de transmission sur un médium,
+dans le contexte qui nous intéresse le médium radio. Il s'agit d'un
+indicateur de qualité de service.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{M}
+
+\begin{description}
+
+\item[MAC] \lang{``Medium Access Control''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Contrôle
+d'Accès au Médium~>>}. Représente la couche 2 de la pile protocolaire
+dans le modèle réseau OSI (ou précisément, la partie la plus basse de
+cette couche 2).
+
+Cette couche est chargée de contrôler l'accès au médium du réseau, dans
+notre cas le médium radio, afin de s'assurer de la bonne qualité des
+transmissions, et notamment de l'absence de collisions. \`A cette fin,
+de nombreux protocoles ont été développés pour implanter cette couche 2~:
+les protocoles MAC. Certains sont issus de standards comme IEEE 802.15.4,
+d'autres sont le résultat de recherches académiques et/ou industrielles.
+
+\item[MCU] \lang{``MicroController Unit''} \\
+Acronyme anglo-saxon, désignant un \nom{Microcontrôleur}, c'est-à-dire
+un circuit regroupant processeur central et plusieurs périphériques de
+base intégrés, comme des \lang{timers}, des entrées-sorties avec
+gestion de bus de communication intégrée, des convertisseurs entre
+signaux analogiques et digitaux, etc.
+
+De tels circuits sont utilisés massivement dans le domaine de l'informatique
+embarquée, ainsi que dans les noeuds de WSN, dont ils constituent le
+<<~c{\oe}ur~>>.
+
+\item[Mote] \ \\
+Terme anglo-saxon désignant~--- dans le cadre du présent manuscrit de
+thèse~--- un n{\oe}ud d'un réseau de capteurs sans-fil.
+
+\item[MPU] \lang{``Memory Protection Unit''} \\
+Acronyme anglo-saxon, désignant une \nom{unité de protection mémoire}.
+Il s'agit d'un circuit dédié, optionnellement intégré à un microcontrôleur,
+afin de réserver certaines parties de la mémoire à certaines parties de
+code, notamment les parties de code s'exécutant dans un <<~mode privilégié~>>
+(parfois aussi appelé <<~superviseur~>>, <<~système~>>, etc.) que le
+microcontrôleur est susceptible de fournir.
+
+La présence d'une MPU dans un microcontrôleur facilite ainsi la détection
+des erreurs liées à la mémoire (débordements, accès anormaux, etc.), et
+aide grandement à la réalisation de systèmes fiables et robustes.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{O}
+
+\begin{description}
+
+\item[OS] \lang{``Operating System''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Système
+d'Exploitation~>>}.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{P}
+
+\begin{description}
+
+\item[PAN] \lang{``Personal Area Network''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Réseau
+d'\'Etendue Personnel~>>}. Désigne en général un réseau de capteurs
+sans-fil élémentaire, regroupé autour de et contrôlé par un n{\oe}ud
+coordinateur spécifique.
+
+\item[PHY] <<~Couche PHYsique~>> \\
+Diminutif désignant la couche 1 de la pile protocolaire dans le modèle
+réseau OSI, qui consiste en général en les pilotes~--- \lang{``drivers''}~---
+des émetteurs~/ récepteurs radio, dans le cadre des réseaux sans-fil auquel
+se consacre la présente thèse.
+
+\item[PRR] \lang{``Packet Reception Rate''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Taux de
+Réception de Paquets~>>}. Désigne la fraction de paquets transmise avec
+succès de leur émetteur à leur destinataire final. Il s'agit bien évidemment
+d'un critère essentiel de QdS.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q}
+
+\begin{description}
+
+\item[QdS] \nom{<<~Qualité de Service~>>} \\
+Acronyme francophone, traduction de l'anglo-saxon \lang{``Quality of
+Service''}.
+
+\item[QoS] \lang{``Quality of Service'} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Qualité de
+Service~>>}.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{R}
+
+\begin{description}
+
+\item[RDC] \lang{``Radio Duty Cycle''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Cycle
+d'Activité de la Radio~>>}. Désigne la stratégie d'activation~/
+désactivation cyclique de l'émetteur~/ récepteur radio d'un n{\oe}ud de
+réseau de capteurs sans-fil, afin d'économiser au mieux l'énergie de
+ce n{\oe}ud (la radio étant le circuit le plus gourmand en énergie dans
+de tels appareils), tout en assurant la bonne transmission des informations
+sur le réseau (c'est-à-dire que la radio doit rester active aux moments
+nécessaires). Cette stratégie dait l'objets de protocoles, en général
+intégrés aux protocoles MAC, lesquels deviennent alors des protocoles
+MAC~/RDC~--- assurant ces deux fonctions liées et complémentaires.
+
+Par extension, \lang{``duty cycle''} désigne également la fraction
+cyclique d'activation de la radio (c-à-d., pour simplifier, le pourcentage
+d'activité radio) résultant de l'exécution d'un protocole RDC donné.
+
+\item[RFD] \lang{``Reduced Function Device''} \\
+Acronyme anglo-saxon, issu du standard IEEE 802.15.4, désignant un matériel
+aux ressources limitées, incapable de jouer le rôle de coordinateur de
+PAN~--- et par conséquent, limité à celui de <<~noeud-feuille~>>, se
+contentant en général d'interagir avec l'environnement physique avec
+ses capteurs et (éventuellement) ses actionneurs, et de transmettre
+les données physiques ainsi reçues sur le réseau, à l'exclusion de
+toute tâche (plus) complexe. Ce terme est opposé à celui de FFD.
+
+\item[RIOT OS] \ \\
+L'une des plates-formes logicielles parmi les plus avancées dans le domaine
+des WSN. Faisant l'objet d'un développement et d'une diffusion rapide, elle
+est au centre de nombreux travaux et études dans le présente thèse.
+
+\item[RSSI] \lang{``Received Signal Strength Indicator''} \\
+Acronyme anglo-saxon, désignant la puissance efficace du signal radio lors
+d'une transmission donnée, notamment par rapport au bruit de fond ambiant.
+Il s'agit d'un indicateur important de qualité de service.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{S}
+
+\begin{description}
+
+\item[S-CoSenS] \ \\
+Protocole MAC~/ RDC, conçu au sein de notre équipe de recherche (Madynes).
+Dérivé évolué de CoSenS, son implantation et son amélioration, au sein
+de plates-formes logicielles adaptées (comme RIOT OS) ont constitué le
+c{\oe}ur des travaux effectués au sein de la présente thèse. Il semble
+notamment offir des propriétés de QdS supérieures à celles de ContikiMAC,
+notamment en présence d'un trafic réseau intense.
+
+\item[SoC] \lang{``System-on-Chip''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Système sur
+une puce~>>}. Désigne un système informatique complet regroupé sur un
+seul circuit intégré. Par rapport à un microcontrôleur, la logique est
+poussée à son maximum, le SoC étant normalement à lui seul un matériel
+informatique complet et auto-suffisant, là où le microcontrôleur est plutôt
+destiné à être associé à d'autres circuits ou éléments annexes pour former
+un autre appareil (système informatique, ou appareil industriel,
+électroménager, etc.)
+
+\item[Sensor] \ \\
+Terme anglo-saxon, désignant en français un \nom{capteur} capable de mesurer
+un phénomène physique de l'environnement. La présence de tels capteurs sur
+un n{\oe}ud équipé d'un émetteur~/ récepteur radio est ce qui le fait
+désigner sous le terme de <<~capteur sans-fil~>> (\lang{``Wireless
+Sensor''} en anglais).
+
+\item[SNR] \lang{``Signal/Noise Ratio''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Rapport Signal
+sur Bruit~>>}. Désigne la force d'un signal utile par rapport au bruit
+ambiant (interférences) sur un médium radio donné. Ce paramètre physique
+a donc bien évidemment une influence primordiale sur la QdS. La nature
+même du médium radio rend ce paramètre SNR extrêmement variable dans
+l'espace et le temps, ce qui rend le dit médium peu fiable, \emph{et}
+difficile à simuler par logiciel.
+
+\item[SPI] \lang{``Serial Peripheral Interface''} \\
+Acronyme anglo-saxon, désignant une technologie de bus série, reliant des
+circuits au sein d'un même appareil électronique (parfois même au sein
+d'un même microcontrôleur). Souvent employé au sein des n{\oe}uds de
+réseaux de capteurs sans-fil pour relier le microcontrôleur central
+à l'émetteur~/ récepteur radio.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{T}
+
+\begin{description}
+
+\item[TDMA] \lang{``Time Division Multiple Access''} \\
+Acronyme anglo-saxon, désignant une procédure, basée sur le multiplexage
+temporel, destinée à gérer l'envoi correct d'un paquet de données sur le
+médium radio.
+
+Employée par de nombreux protocoles MAC alternatifs, conçus par la
+communauté académique ou industrielle.
+
+\item[Transceiver] \ \\
+Terme anglo-saxon, diminutif de \lang{``Radio Transceiver''}, désignant
+en français un \nom{émetteur~/ récepteur radio}.
+
+\item[TRP] \nom{<<~Taux de Réception de Paquets~>>} \\
+Acronyme francophone, se traduisant en anglais par \lang{``Packet Reception
+Rate''}. Désigne la fraction de paquets transmise avec succès de leur
+émetteur à leur destinataire final. Il s'agit bien évidemment d'un critère
+essentiel de QdS.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{W}
+
+\begin{description}
+
+\item[WAN] \lang{``Wide Area Network''} \\
+Acronyme anglo-saxon, se traduisant en français par <<~Réseau de Vaste
+\'Etendue~>>. Désigne en général l'Internet.
+
+\item[WSN] \lang{``Wireless Sensor Network''} \\
+Acronyme anglo-saxon, se traduisant en français par \nom{<<~Réseau de
+Capteurs Sans-Fil~>>}.
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section*{X}
+
+%\begin{description}
+
+%\item[XXX] \ \\
+%Définition de l'élément XXX.
+
+%\item[XXX] \ \\
+%Définition de l'élément XXX.
+
+%\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                           FIN DU GLOSSAIRE                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+

@@ -1,0 +1,24 @@
+% apalite.sty style, used in conjunction with apalike.bst,
+% will produce an apa-like bibliography style.
+%
+% KR : pour faire ENFIN fonctionner correctement ce style bibliographique
+%      "apalike" de mes deux !!!!!!!!
+%
+
+
+% Set length of hanging indentation for bibliography entries
+%
+\ifx\bibhang\@thisisundefined \newlength{\bibhang} \fi
+\setlength{\bibhang}{2em}
+
+% \thebibliography environment depends on whether or not `chapter's can exist
+%
+
+% `; ' goes between cites, and there's no \hbox around individual cites
+%
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{; }\@ifundefined
+       {b@\@citeb}{{\bf ?}\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+{\csname b@\@citeb\endcsname}}}{#1}}

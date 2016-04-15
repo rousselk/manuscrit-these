@@ -1,0 +1,245 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Publications et Réalisations}
+\label{AnxPubReal}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-0.5cm}
+
+
+\section*{Publications}
+\label{SecAnxPubSci}
+
+
+\subsection*{Conférences~/ \lang{workshops}}
+
+\begin{itemize}
+
+\item Moutie Chehaider, Kévin Roussel, Ye-Qiong Song.
+<<~Interopérabilité des réseaux de capteurs hétérogènes dans
+un appartement intelligent~>>
+\textit{9èmes journées francophones Mobilité et Ubiquité}, UbiMob 2013.
+Nancy, France. Juin 2013.
+
+\item Kévin Roussel.
+<<~Implementing a real-time MAC protocol under RIOT OS : running on
+Zolertia Z1 motes~>>
+In \textit{Workshop Internet of Things / Equipex FIT IoT-LAB},
+INRIA Grenoble Rhone-Alpes, Montbonnot, France. Novembre 2014.
+(présentation sans actes.)
+
+\item Kévin Roussel, Ye-Qiong Song, Olivier Zendra.
+<<~RIOT OS Paves the Way for Implementation of High-performance
+MAC Protocols~>>
+In \textit{Proceedings of the 4th International Conference
+on Sensor Networks}, SensorNets 2015, pages 5--14.
+ESEO, Angers, France. Février 2015.
+
+\item Kévin Roussel, Ye-Qiong Song, Olivier Zendra.
+<<~ Using Cooja for WSN Simulations: Some New Uses and Limits ~>>.
+In \textit{Proceedings of the 2016 International Conference on Embedded
+Wireless Systems and Networks}~--- EWSN~'16~; \lang{workshop NextMote},
+pages 319--324.
+\lang{Technische Universit\"at}, Graz, Autriche. Février 2016.
+
+\end{itemize}
+
+
+\subsection*{Rapports de recherche INRIA (HAL)}
+
+\begin{itemize}
+
+\item Kévin Roussel, Ye-Qiong Song.
+<<~A critical analysis of Contiki's network stack for integrating
+new MAC protocols~>>. 13 pages. Décembre 2013.\\
+Rapport de recherche INRIA \no~8776 \textit{(CRI-Nancy Grand Est)}.\\
+ID hal-01202542.
+
+\item Kévin Roussel, Ye-Qiong Song, Olivier Zendra.
+<<~Practical Lessons Learned through Implementation and Performance
+Evaluation of Two MAC/RDC Protocols on WSN OS~>> 25 pages. Mars 2015.\\
+Rapport de recherche INRIA \no~8777 \textit{(CRI-Nancy Grand Est)}.\\
+ID hal-01202664.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Réalisations techniques (\lang{``Pull Requests''} sur GitHub)}
+\label{SecAnxRealTech}
+
+
+\subsection*{Pour Contiki OS}
+
+Ces deux contributions ont été refusées (mais réutilisées en partie et
+indirectement pour une amélioration ultérieure de l'API radio de Contiki~:
+PR \#617 de Niklas Finne et~al, intégrée au code de Contiki OS en juin 2014).
+
+
+\begin{itemize}
+
+\item Kévin Roussel, George Oikonomou, Mariano Alvira, David Kopf,
+      Valentin Sawadski, Joakim Eriksson, Peter A. Bigot, Adam Dunkels.
+PR \#192~: <<~Extended radio drivers API~>>.
+(2013--2014).
+
+\item Kévin Roussel, Mariano Alvira, Joakim Eriksson, George Oikonomou,
+      Oliver Schmidt, Adam Dunkels, Nicolas Tsiftes.
+PR \#519~: <<~Radio api extension~>>.
+(2014).
+
+\end{itemize}
+
+
+\subsection*{Pour RIOT OS}
+
+Toutes les contributions citées ci-dessous dans la présente section
+ont été acceptées et ont été intégrées (\lang{``merged PRs''})
+à la branche principale du code de RIOT OS.
+
+
+\begin{itemize}
+
+\item Kévin Roussel, Ludwig Knüpfer, Oliver Hahm, Thomas Eichinger.
+PR \#408~: <<~Simplify msp430 headers~>>
+(2013).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer.
+PR \#459~: <<~Msp430 lpm freq~>>
+(2013--2014).
+
+\item Kévin Roussel, Oliver Hahm, Kaspar Schleiser, Ludwig Knüpfer,
+      Christian Mehlis, René Kijewski.
+PR \#685~: <<~Panic~>>
+(2014).\\
+\emph{Best PR award of the month (Février 2014).}
+
+\item Kévin Roussel, René Kijewski, Oliver Hahm, Ludwig Knüpfer,
+      Christian Mehlis.
+PR \#687~: <<~Add a \texttt{reboot()} function to \texttt{kernel.h}
+              definitions~>>
+(2014).
+
+\item Kévin Roussel, René Kijewski, Kaspar Schleiser.
+PR \#689~: <<~Portable definition of function attributes~>>
+(2014).
+
+\item Kévin Roussel, René Kijewski, Oliver Hahm, Ludwig Knüpfer.
+PR \#724~: <<~Reboot~>>
+(2014).
+
+\item Kévin Roussel, René Kijewski, Oliver Hahm.
+PR \#881~: <<~Ensure that stack pointer is correcty aligned during
+              thread creation on MSP430~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Thomas Eichinger.
+PR \#882~: <<~CC2420 radio tranceiver's driver fixes~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer, Christian Mehlis,
+      Thomas Eichinger, Hauke Petersen.
+PR \#893~: <<~Zolertia Z1 port for RIOT OS~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Thomas Eichinger, Oliver Hahm,
+      René Kijewski.
+PR \#915~: <<~Add a standard way to query CCA status on CC2420 transceiver~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer, Thomas Eichinger,
+      Martine Lenders, Hauke Petersen.
+PR \#925~: <<~Proposal for common 802.15.4 radio driver API definition~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm.
+PR \#954~: <<~Fix for CC2420 radio driver for TelosB~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer.
+PR \#957~: <<~Handle race conditions preventing MSP430 timers to be set
+              correctly~>>
+(2014).
+
+\item Kévin Roussel, René Kijewski, Kaspar Schleiser, Ludwig Knüpfer,
+      Oliver Hahm, Christian Mehlis.
+PR \#970~: <<~core: Add the ability to send a message to the current
+              thread's message queue~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, René Kijewski, Oliver Hahm,
+      Christian Mehlis, Kaspar Schleiser.
+PR \#1002~: <<~Enhance implementation of \texttt{hwtimer\_ spin()}~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer.
+PR \#1113~: <<~Use Timer B on MSP430 architecture~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm.
+PR \#1211~: <<~Completing low-level radio driver definition~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Thomas Eichinger, Christian Mehlis.
+PR \#1223~: <<~Modify \& extend CC2420 driver to comply with API described
+               in \texttt{radio\_ driver.h}~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm.
+PR \#1239~: <<~Add a missing constant in \texttt{'radio\_ tx\_status\_t'}
+               enum~>>
+(2014).
+
+\item Kévin Roussel, René Kijewski, Hauke Petersen, Ludwig Knüpfer,
+      Christian Mehlis, Oliver Hahm.
+PR \#1380~: <<~Reset ARM Cortex-M3 MCUs before flashing~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Oliver Hahm.
+PR \#1383~: <<~Fix a design error in \texttt{cc2420\_do\_send()} function~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Oliver Hahm.
+PR \#1385~: <<~Fix a nasty race condition in CCA determination on CC2420~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm.
+PR \#1388~: <<~boards/z1: fix \texttt{cc2420\_txrx} function in CC2420
+               driver HAL~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Hauke Petersen, Kaspar Schleiser.
+PR \#1617~: <<~Ensure \texttt{hwtimer\_spin()} won't wait for
+               an unreachable stop counter value~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Oliver Hahm, Hinnerk van Bruinehsen.
+PR \#1618~: <<~Fix \texttt{thread\_yield()} on MSP430 platforms~>>
+(2014).
+
+\item Kévin Roussel, Ludwig Knüpfer, Oliver Hahm, Hinnerk van Bruinehsen,
+      Martine Lenders.
+PR \#1619~: <<~Only use 16 significative bits for MSP430 \texttt{hwtimer}s~>>
+(2014).
+
+\item Kévin Roussel, Oliver Hahm, Ludwig Knüpfer.
+PR \#2214~: <<~Msp430 misc interrupt-related fixes~>>
+(2014).
+
+\item Kévin Roussel, Jonas Remmert, Oliver Hahm
+PR \#4138~: <<~Add a \texttt{netopt} for getting and setting CCA threshold~>>
+(2015).
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%            FIN DE L'ANNEXE "PUBLICATIONS ET RÉALISATIONS"             %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
