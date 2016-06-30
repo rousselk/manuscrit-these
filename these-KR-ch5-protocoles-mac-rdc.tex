@@ -209,6 +209,7 @@ figure \vref{FigEcranCooja1}.}
 \label{FigZoomTimelineCooja1}
 \end{figure}
 
+
 Sur la figure \vref{FigZoomTimelineCooja1}, les nombres situés à gauche
 représentent les identifiants numériques (ID) des \lang{motes}~: le routeur
 possède l'ID numéro \nodeid{1}, tandis que les noeuds-feuilles ont les IDs
@@ -627,6 +628,8 @@ trame avec ContikiMAC, en fonction du \lang{channel check rate}.}
 \label{FigInstablDelaisContikiMAC}
 \end{figure}
 
+\newpage
+
 Ces résultats sur les délais de transmissions nous indiquent que~:
 
 \begin{itemize}
@@ -801,9 +804,39 @@ en réception, ou en attente, sont toujours plus faibles~--- c'est à dire
 meilleurs~--- pour ContikiMAC que pour S-CoSenS. Cela est particulièrement
 vrai pour l'activité radio globale sur les noeuds routeurs, où la
 différence en faveur de ContikiMAC est proprement spectaculaire.
+(Cette différence est surtout due à la nécessité de fixer
+$\mathrm{WP}_{min}$ à 50\% pour estimer correctement le trafic radio~---
+cf. section \vref{SubSecPropoAlgo}.)
+Ces constatations sont illustrées par les figures
+\vrefrange{FigDutyCyclesRouteurs}{FigDutyCyclesFeuilles}.
+
+
+%% figures de comparaison des "duty-cycles" pour les routeurs
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{images/ch5-duty-cycles-routeurs.png}
+\flcaption{Comparaison de l'activité radio (\lang{duty cycle}) sur les
+noeuds routeurs fonctionnant respectivement sous ContikiMAC et S-CoSenS,
+avec des \lang{subframes} de 31~ms.}
+\label{FigDutyCyclesRouteurs}
+\end{figure}
+
+
+%% figures de comparaison des "duty-cycles" pour les noeuds-feuilles
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{images/ch5-duty-cycles-noeuds-feuilles.png}
+\flcaption{Comparaison de l'activité radio (\lang{duty cycle}) sur les
+noeuds-feuilles fonctionnant respectivement sous ContikiMAC et S-CoSenS,
+avec des \lang{subframes} de 31~ms.}
+\label{FigDutyCyclesFeuilles}
+\end{figure}
+
 
 ContikiMAC prouve ainsi qu'il est en effet \emph{un protocole à très
 basse consommation d'énergie}.
+
+\bigskip
 
 La seule exception à cette constatation de supériorité générale de
 ContikiMAC en matière de \lang{duty cycle} se situe dans les temps
@@ -870,9 +903,9 @@ vérifier et constater la présence ou non d'une violation d'espace mémoire,
 et en aucun cas empêcher sa survenue et ses conséquences. En cas de problème,
 la seule alternative possible reste d'arrêter le système, et de le faire
 éventuellement redémarrer <<~à froid~>> (\lang{``hard reset''}).\\
-Un moyen plus efficace serait \emph{d'ajouter automatiquement, lors
-de la compilation, des séquences de code de vérification,} notamment pour
-surveiller l'évolution de la valeur du registre SP lors de l'entrée
+Un moyen plus efficace serait \emph{d'ajouter automatiquement, au cours du
+processus de compilation, des séquences de code de vérification,} notamment
+pour surveiller l'évolution de la valeur du registre SP lors de l'entrée
 dans un sous-programme ou~--- pour les environnements multitâches~---
 lors d'un changement de contexte. Ces types d'évènements étant ceux
 augmentant la taille de la pile, ils correspondent donc aux moments
@@ -1053,6 +1086,8 @@ avec S-CoSenS, en fonction de la durée de la \lang{subframe}, sur des
 \label{FigPRRIoTLAB}
 \end{figure}
 
+\bigskip
+
 On voit que les courbes présentées sont tout à fait similaires
 à celles obtenues par simulation, telles que montrées dans la figure
 \vref{FigStablPRRSCoSenS}, et semblent donc valider globalement
@@ -1125,7 +1160,7 @@ performance~:
 \begin{enumerate}
 
 \item En premier lieu, l'observation de ContikiMAC et de son fonctionnement
-nous ont poussé à \emph{tenter d'implanter un mécanisme similaire à
+nous a poussé à \emph{tenter d'implanter un mécanisme similaire à
 l'optimisation \lang{``phase lock''} de ContikiMAC (discutée en section
 \vref{ParContikiMAC})} afin d'obtenir des \lang{duty cycles} inférieurs~---
 c-à-d. meilleurs~--- pour les noeuds-feuilles fonctionnant sous S-CoSenS.
@@ -1148,12 +1183,12 @@ routeur durant les cycles précédents pour évaluer le trafic radio et
 calculer la durée des périodes d'écoute WP (cf. section \vref{ParSCoSenS}),
 nous souhaitons désormais nous servir du nombre de \nom{SFD} \footnotemark[3]
 entendus durant les périodes d'écoute précédentes pour mieux évaluer
-le trafic réseau passant et donc calculer plus justement la durée
+le trafic réseau passant et donc calculer plus justement les durées
 des périodes d'écoute suivantes.
 
 \footnotetext[3]{\nom{SFD~: \lang{``Start of Frame Delimiter''}}~;
 il s'agit d'un signal radio (de contenu constant, prédéfini par la couche
-physique du standard IEEE 802.15.4) envoyé sur le médium comme préambule
+physique du standard IEEE 802.15.4) envoyé sur le médium comme marqueur
 pour signaler le début de l'émission d'une trame, et permettre la
 synchronisation des récepteurs radio pour la bonne réception de cette
 nouvelle trame.}
@@ -1163,7 +1198,7 @@ nouvelle trame.}
 Comme nous l'avons vu dans la section \vref{ParSCoSenS} de l'état de l'art,
 S-CoSenS (dans sa version actuelle) partage ses \lang{``subframes''} de
 longueur fixe entre une période d'écoute WP et une période de sommeil SP.
-Le calcul de la durée de WP est actuellement effectuée sur la base du
+Le calcul de la durée de WP est actuellement effectué sur la base du
 nombre de trames reçues avec succès durant les périodes d'écoutes des
 cycles précédents (via une moyenne glissante).
 
@@ -1172,14 +1207,20 @@ cycles précédents (via une moyenne glissante).
 Ce mécanisme est efficace en théorie, mais ne tient pas compte du bruit.
 Un réseau sans-fil peut être parasité par de nombreux facteurs
 (interférences, collisions, ou même trames destinées à d'autres noeuds
-surtout si plusieurs PANs différents sont présents à proximité).\\
+surtout si plusieurs PANs différents sont présents à proximité).
+
 En présence d'un tel bruit, les trames destinées à un noeud $N$ vont
-être <<~noyés~>> dans la masse de signaux sans intérêt pour ce noeud $N$.
+être <<~noyées~>> dans la masse de signaux sans intérêt pour ce noeud $N$.
 Par conséquent, avec le mode de calcul actuel, le noeud $N$, recevant peu
 de trames utiles, va diminuer rapidement sa période d'écoute WP (passant
 ainsi la majorité de ses cycles en période de sommeil SP). Il arrivera
 alors, dans un milieu fortement bruité, que le noeud $N$ manque ainsi
-des trames lui étant destinées.\\
+des trames lui étant destinées. C'est pour cela que nous avons dû fixer
+$\mathrm{WP}_{min}$ à 50\% sur les routeurs S-CoSenS lors de nos tests
+(cf. section \vref{SubsecDutyCycles}) afin d'assurer une QdS suffisante.
+(Nous donnons priorité absolue à la QdS~: voir la conclusion en section
+\vref{SecDiscussContribConcluProtocolesMAC}).
+
 Nous nous proposons, pour calculer la durée de WP, de ne plus compter le
 nombre de trames reçues avec succès, mais de compter le nombre de SFD reçus,
 c'est-à-dire le nombre de trames détectées sur le médium radio. Un tel
@@ -1190,71 +1231,72 @@ permettre à un noeud $N$ d'éviter de manquer des trames lui étant
 destinées, pour cause de WP trop courte. Le défaut potentiel de cette
 technique est d'augmenter la durée de WP, donc mécaniquement de diminuer
 celle de SP, c'est-à-dire d'augmenter la consommation d'énergie du noeud,
-peut-être inutilement.
+peut-être inutilement. 
 
 La contribution attendue de ces tests sur matériel réel est donc de
 \emph{comparer les deux modes de calcul de la durée de WP~--- nombre
 de trames reçues, et nombre de SFD détectés~--- et de déterminer par
 l'expérience lequel représente le meilleur compromis} entre QdS (nombre
-de trames reçues ou manqués) et consommation d'énergie (durée optimale
+de trames reçues ou manquées) et consommation d'énergie (durée optimale
 ou non de la période de sommeil SP).
 
-Notons également que \emph{le recours au SFD pour évaluer l'intensité
-du trafic réseau peut être mise à profit pour améliorer tout protocole
+Notons également que \emph{le recours aux SFD pour évaluer l'intensité
+du trafic réseau peut être mis à profit pour améliorer tout protocole
 ayant besoin de connaître cette intensité~--- ou même pouvant faire usage
 de cette information~--- pour adapter dynamiquement son fonctionnement}.
-ContikiMAC pourrait par exemple s'en servir pour faire varier dynamique
-son \lang{Channel Check Interval} en fonction du trafic, l'augmentation
-de la fréquence de ce dernier permettant visiblement de mieux traiter
-les charges réseau intenses.
+ContikiMAC pourrait par exemple s'en servir pour faire varier de façon
+dynamique son \lang{Channel Check Interval} en fonction du trafic,
+l'augmentation de la fréquence de ce paramètre permettant visiblement
+de mieux traiter les charges réseau intenses.
 
-\item Nous avons également eu l'idée combiner nos tests avec une
+\item Nous avons également eu l'idée de combiner nos tests avec une
 \emph{évaluation de l'influence du seuil de réception de l'émetteur~/
 récepteur radio (\lang{``CCA Threshold''})}, telle qu'étudiée en détail
 dans une publication de 2013 \cite{CCAThresholdStudy}~--- proposant un
 protocole nommé \nom{AEDP} (\lang{``Adaptive Energy Detection Protocol''})
 permettant d'améliorer la fiabilité des liens réseaux face au bruit
-présent sur le médium radio~--- pour une éventuelle inclusion de la
+présent sur le médium radio~---, pour une éventuelle inclusion de la
 gestion du \lang{``CCA Threshold''} dans la pile réseau de notre
 plate-forme logicielle.
 
 Le protocole AEDP décrit en \cite{CCAThresholdStudy} se penche sur
 le problème du bruit, et de l'activité inutile des émetteurs~/ récepteurs
-radio qui en découle.\\
-Son principe est, pour résumer, d'adapter le seuil en dBm de sensibilité
-de la radio (\lang{``CCA Threshold''}), en fonction de deux variables~:
-le nombre d'envois nécessaires d'une trame donnée pour que celui puisse
-être transmis avec succès (variable ${ETX}$), et le nombre d'activations
+radio qui en découle.
+
+Son principe est, pour résumer, d'adapter le seuil de sensibilité en dBm
+de la radio (\lang{``CCA Threshold''}) en fonction de deux variables~:
+le nombre d'envois nécessaires d'une trame donnée pour que celle-ci puisse
+être transmise avec succès (variable ${ETX}$), et le nombre d'activations
 de la radio nécessaires pour pouvoir détecter l'arrivée d'un signal utile
-(variable ${WR}$). Le protocole AEDP consiste à diminuer le \lang{``CCA
+(variable ${WR}$). Le protocole AEDP consiste à ajuster le \lang{``CCA
 Threshold''} (ici nommé variable $T$) tout en gardant $ETX$ en dessous
 d'une valeur maximale d'essais pour réussir à envoyer une trame (constante
-${ETX}_{threshold}$), \emph{et} en évitant que $WR$ tombe sous une valeur
-minimale correspondant au nombre estimé d'activations de la radio nécessaires
-pour une réception correcte (constante ${WR}_{threshold}$).
-
+${ETX}_{threshold}$)~--- ce qui implique de diminuer $T$~---, \emph{et} en
+évitant que $WR$ ne dépasse une valeur maximale correspondant au nombre
+estimé nécessaire d'activations de la radio pour une réception correcte
+(constante ${WR}_{threshold}$)~--- ce qui implique de d'augmenter $T$. \\
 Pour résumer, le but du protocole AEDP est de trouver la valeur minimale
-de $T$ telle que ${ETX} < {ETX}_{threshold}$ et ${WR} > {WR}_{threshold}$.
+de $T$ telle que ${ETX} < {ETX}_{threshold}$ et ${WR} < {WR}_{threshold}$.
 On voit qu'il s'agit, une fois de plus, d'un compromis entre QdS (taux
-de réception de trames et débit de données) et consommation minimale
-d'énergie.
+de réception de trames et débit de données: $ETX$) et consommation
+minimale d'énergie ($WR$).
 
 Ce protocole a au départ été conçu pour les protocoles LPL, dont le principe
 est rappelons-le de se réveiller à intervalles (plus ou moins) réguliers
-pour vérifier si une trame leur est destinés~--- cf. section
+pour vérifier si une trame leur est destinée~--- cf. section
 \vref{SubsecProtoMACLPL} de l'état de l'art~---, et a été testé
 par ses auteurs sur TinyOS et Contiki.
 
-Bien que S-CoSenS ne reposent pas principalement sur LPL, le principe
+Bien que S-CoSenS ne repose pas principalement sur LPL, le principe
 consistant à jouer sur le \lang{``CCA Threshold''} pour améliorer le
 rapport signal~/ bruit (\nom{SNR}~: \lang{Signal/Noise Ratio}) est
-intéressant, et peut être complémentaire, pour S-CoSenS, de l'essai
-de la méthode du comptage des SFD pour optimiser le rapport QoS~/
+intéressant et peut être complémentaire, pour S-CoSenS, de l'essai
+de la méthode du comptage des SFD pour optimiser le rapport QdS~/
 consommation d'énergie.
 
 On peut raisonnablement penser que \emph{l'adaptation dynamique du
 \lang{``CCA Threshold''} pour améliorer le rapport signal~/ bruit peut être
-mis à profit par n'importe quel protocole MAC~/ RDC~--- voire même plus
+mise à profit par n'importe quel protocole MAC~/ RDC~--- voire même plus
 directement au niveau des pilotes radio eux-mêmes~--- pour améliorer les
 performances et l'efficacité des transmissions sur les réseaux sans-fil}.
 
@@ -1280,25 +1322,25 @@ suivantes~:
 \item Concernant \emph{l'implantation d'un mécanisme similaire à
 l'optimisation \lang{``phase lock''} de ContikiMAC}, notre but est
 d'obtenir des données de \lang{``duty cycle''} afin de vérifier si des
-améliorations significatives~--- c-à-d des taux d'activité radio
+améliorations significatives~--- c.-à-d. des valeurs d'activité radio
 significativement inférieures~--- peuvent être obtenues. Or, comme nous
 l'avons évoqué en section \vref{SubsecOptim}, et comme nous l'étudierons
-en détail en section \vref{SecLimInexactSimu} au chapitre suivant, les
-résultats de \lang{``duty cycle''} obtenus à l'aide du \lang{``framework''}
-Cooja~/ MSPSim manquent de fiabilité. \emph{Les conclusions sur les
-éventuelles améliorations obtenues par l'implantation du mécanisme de
-\lang{``duty cycle''} via une étude faite par simulations~/ émulations
-ne seront donc pas robustes, et pourront facilement être remises
-en question}.
+en détail en section \ref{SecLimInexactSimu} au chapitre suivant, les
+résultats (notamment de \lang{``duty cycle''}) obtenus à l'aide du
+\lang{``framework''} Cooja~/ MSPSim manquent de fiabilité.
+\emph{Les conclusions sur les éventuelles améliorations obtenues par
+l'implantation du mécanisme de \lang{``phase lock''} via une étude faite
+par simulations~/ émulations ne seront donc pas robustes, et pourront
+facilement être remises en question}.
 
-\item Concernant \emph{l'étude de l'influence des SFD sur le calcul
-de la période d'écoute WP de S-CoSenS}, le matériel émulé par Cooja~/
+\item Concernant \emph{l'étude de l'influence des SFD sur le calcul de la
+durée de la période d'écoute WP de S-CoSenS}, le matériel émulé par Cooja~/
 MSPSim~--- à savoir les \lang{motes} Sky~/ TelosB tout comme les Z1~---
-ne permettent pas de recevoir l'interruption correspondant aux SFD (début
-de réception d'un paquet) de façon simple~: ces différentes motes relient
-en effet cette interruption à une entrée (\lang{``capture''}) d'un des
-\lang{timers} du microcontrôleur central. Il faudrait pour la détecter
-effectuer des modifications complexes, non portables au mécanisme de
+ne permet pas de recevoir l'interruption correspondant aux SFD (début de
+réception d'une trame) de façon simple~: ces différentes \lang{motes}
+relient en effet cette interruption à une entrée (\lang{``capture''}) d'un
+des \lang{timers} du microcontrôleur central. Il faudrait pour la détecter
+effectuer des modifications complexes et non portables au mécanisme de
 gestion des \lang{timers} de RIOT, ce qui nuirait probablement à la
 fiabilité de ce dernier. Une étude mettant en place une version ainsi
 <<~altérée~>> de RIOT, d'une qualité insuffisante, n'aurait que peu
@@ -1313,12 +1355,12 @@ actuelle reconnu comme fiable, disponible et compatible avec Cooja.
 un matériel permettant de détecter les SFD de manière fiable et efficace.}
 
 \item Concernant \emph{l'étude de l'influence du rapport signal~/ bruit
-(SNR) sur l'optimisation de la qualité de service et de la consommation
+(SNR) sur l'optimisation de la qualité de service et la consommation
 d'énergie}, une telle étude implique~--- par nature~--- le médium radio
 de façon centrale. Or, il est bien connu que la simulation du médium radio
 est le point faible de toutes les études par simulation des réseaux
 sans-fil (qu'il s'agisse des WSN comme des réseaux plus <<~classiques~>>
-tels le WiFi). En effet, comme nous l'avons vu notamment au chapitre
+comme le WiFi). En effet, comme nous l'avons vu notamment au chapitre
 \ref{ChCtxProb}, le médium radio est par nature peu fiable, sujet à la
 diffusion et présente des variations fortes et rapides~--- le plus souvent
 imprévisibles~--- en fonction du temps et de l'espace. \emph{Des études
@@ -1332,10 +1374,10 @@ un intérêt, extrêmement limités.}
 \emph{Nous voyons donc que sur nos trois propositions d'améliorations
 algorithmiques, les deux dernières ne peuvent pas être étudiées de façon
 assez fiable par simulation~/ émulation}, et nécessiteront donc des études
-sur des réseaux réels. Nous avons fourni une contribution permettant la mise
-en place de la fonctionnalité de gestion du CCA \cite{PRriotEnh13}
-(nécessaire par exemple au protocole AEDP), qui pourra ainsi faire
-l'objet de travaux ultérieurs idoines.
+sur des réseaux réels. Nous avons fourni une contribution mettant en place
+la fonctionnalité de gestion du \lang{``CCA Threshold''} \cite{PRriotEnh13}
+(nécessaire par exemple au protocole AEDP), qui pourra ainsi faire l'objet
+de travaux ultérieurs idoines.
 
 \smallskip
 
@@ -1347,13 +1389,15 @@ suite confirmation par des tests sur matériel réel). Nous avons donc exécuté
 un jeu de simulations, dans cette optique bien limitée d'exploration
 préliminaire.
 
-Nous avons repris le scénario d'émission de paquets entre 10 noeuds-feuilles,
+Nous avons repris le scénario d'émission de trames entre 10 noeuds-feuilles,
 un routeur et un \lang{``sink''}, décrit et utilisé en section
 \vref{SecEvalPerfSCosens}. Après avoir modifié notre implantation
 de S-CoSenS pour tenter de synchroniser les noeuds-feuilles sur l'émission
 des \lang{beacons} du routeur, nous avons relancé une série de tests et
 obtenu les résultats de \lang{``duty cycle''} montrés en table
-\vref{TblDutyCyclesSCoSenSPhaseLock}.
+\vref{TblDutyCyclesSCoSenSPhaseLock}. La figure
+\vref{FigDutyCyclesPhaseLock31ms} résume l'influence 
+constatée du \lang{``phase lock''} au niveau de l'activité radio totale.
 
 
 %% duty-cycles pour S-CoSenS "modifié"
@@ -1382,9 +1426,20 @@ de type \lang{``phase-lock''} au niveau des noeuds-feuilles.}
 \end{table}
 
 
-On remarque que cette table ne contient que les données pour les
-noeuds-feuilles~: cette optimisation ne s'applique pas au routeur,
-du fait de la conception même du protocole S-CoSenS.
+%% figure de comparaison des duty-cycles pour S-CoSenS avec cycles courts
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=14cm]{images/ch5-duty-cycles-pl-31ms.png}
+\flcaption{Influence du mécanisme de \lang{``phase lock''} sur l'activité
+radio (\lang{duty cycle}) induite par S-CoSenS, avec des \lang{subframes}
+de 31~ms.}
+\label{FigDutyCyclesPhaseLock31ms}
+\end{figure}
+
+
+On remarque que seules les données pour les noeuds-feuilles sont présentées~:
+cette optimisation ne s'applique pas au routeur, du fait de la conception
+même du protocole S-CoSenS.
 
 On voit également que les valeurs de <<~transmission efficace~>>,
 <<~réception efficace~>>, et <<~interférences~>> sont identiques à celles
@@ -1400,16 +1455,16 @@ reste relativement limitée, tout spécialement lors des forts trafics réseau~:
 à un intervalle d'émission des trames de 500~ms, la baisse de valeur
 d'activité radio est à peine perceptible. Ceci est logique~: dans une telle
 configuration, la majorité de l'activité radio a lieu lors de la période
-d'écoute du routeur (WP), et les nombreuses collisions entre trames sont
-responsables de l'activité radio intense nécessaire pour pouvoir réussir
-à faire passer les trames (nombreux réessais).
+d'écoute du routeur (WP), et les nombreuses collisions sont responsables
+de l'activité radio intense nécessaire pour pouvoir réussir à faire passer
+les trames (nombreux réessais).
 
 Avec des débits plus modérés (une trame toute les 1000 et 1500~ms),
 la baisse est plus sensible, et permet de se rapprocher des (et même dans
 un cas descendre sous les) valeurs d'activité radio constatées pour les
 noeuds-feuilles sous ContikiMAC. Néanmoins, la baisse de valeur d'activité
-radio sous la version modifiée de S-CoSenS reste limitée~: étant donné que
-S-CoSenS ne nécessite pas de répéter continuellement l'envoi des paquets
+radio due à la modification de S-CoSenS reste limitée~: étant donné que
+S-CoSenS ne nécessite pas de répéter continuellement l'envoi des trames
 jusqu'à réception par le destinataire (contrairement à ContikiMAC), on peut
 être déçu de ne pas repasser systématiquement et surtout significativement
 sous les valeurs d'activité radio de ContikiMAC.
@@ -1428,6 +1483,9 @@ n'étaient pas affectées par cette optimisation. (Rappelons que dans cette
 configuration~--- cycles de 125~ms~---, S-CoSenS obtient des résultats
 largement meilleurs en termes de qualité de service que ContikiMAC,
 comme vu dans les sections \vrefrange{SubsecTRP}{SubsecDelaiTransm}.)
+
+Ces résultats sont également illustrés par la figure
+\vref{FigDutyCyclesPhaseLock125ms}.
 
 
 %%% duty cycles pour ContikiMAC avec cycle long
@@ -1467,11 +1525,21 @@ Activité radio (avec \lang{``phase lock''})
                                     &  4,61\% &  5,82\% & 17,26\% \\
 \hline
 \end{tabular}
-\flcaption{Statistiques de \lang{duty cycle} pour S-CoSenS avec
-optimisation de type \lang{``phase-lock''} au niveau des noeuds-feuilles,
-et une \lang{subframe} longue de 125~ms.}
+\flcaption{Statistiques de \lang{duty cycle} pour S-CoSenS au niveau
+des noeuds-feuilles, avec une \lang{subframe} longue de 125~ms.}
 \label{TblDutyCyclesSCoSenSPhaseLockCycleLong}
 \end{table}
+
+
+%% figure de comparaison des duty-cycles avec cycles longs
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=14cm]{images/ch5-duty-cycles-pl-125ms.png}
+\flcaption{Influence du mécanisme de \lang{``phase lock''} sur l'activité
+radio (\lang{duty cycle}) induite par S-CoSenS et ContikiMAC, avec
+respectivement des \lang{subframes} de 125~ms et des CCI de 8~Hz.}
+\label{FigDutyCyclesPhaseLock125ms}
+\end{figure}
 
 
 On voit ici qu'avec une durée de \lang{subframe} plus longue,
@@ -1488,34 +1556,34 @@ d'activité radio devient importante au niveau de S-CoSenS avec une durée
 de \lang{subframe} plus longue, ContikiMAC garde un \lang{duty cycle}
 nettement inférieur.
 
-\medskip
+\bigskip
 
 Nous expliquons la relative importance des valeurs de \lang{duty cycle} 
 de S-CoSenS~--- par rapport à ContikiMAC~--- de la façon suivante~:
 outre la \lang{``subframe''} de longueur connue à l'avance, S-CoSenS
 intègre dans son cycle une phase de transmission dont la durée reste
-inconnue jusqu'à sa fin, puisque cette durée dépend du nombre de paquets
-à transmettre, et du temps nécessaire pour les transmettre (éventuelles
+inconnue jusqu'à sa fin, puisque cette durée dépend du nombre de trames
+à transmettre et du temps nécessaire pour les transmettre (éventuelles
 interférences et collisions). Ainsi, S-CoSenS a toujours des cycles de
-durées variables, tandis que les intervalles entre deux cycles~--- c-à-d.
-deux CCA consécutifs~--- est toujours constant pour ContikiMAC quelles que
-soient les circonstances (revoir les sections \vref{ParContikiMAC} et
+durée variable, tandis que l'intervalle entre deux cycles~--- c.-à-d.
+deux CCA consécutifs~--- est toujours constant pour ContikiMAC quelles
+que soient les circonstances (revoir les sections \vref{ParContikiMAC} et
 \vref{ParSCoSenS} pour le détail du fonctionnement de ces deux protocoles).
 
 Il est clair qu'un mécanisme du type \lang{``phase-lock''}, qui retient
-une durée de cycle d'un récepteur pour optimiser les temps d'activation
+la durée de cycle d'un récepteur pour optimiser les temps d'activation
 des émetteurs, fonctionnera bien mieux avec un protocole à durée de cycle
-constant, qu'avec un protocole auto-adaptatif comme S-CoSenS (ou iQueue-MAC)
-ayant des cycles de durée variable et difficilement prévisible.
+constante comme ContikiMAC qu'avec un protocole auto-adaptatif comme
+S-CoSenS ayant des cycles de durée variable et difficilement prévisible.
 
-\medskip
+\bigskip
 
 Ainsi, nous pouvons penser que~:
 
 \begin{itemize}
 
-\item l'implantation d'un mécanisme de type \lang{``phase-lock''} se
-justifie pour S-CoSenS \emph{lorsqu'il est configuré avec une durée de
+\item \emph{l'implantation d'un mécanisme de type \lang{``phase-lock''}
+se justifie pour S-CoSenS lorsqu'il est configuré avec une durée de
 cycle (i.e.~: \lang{``subframe''}) suffisamment longue, là où les baisses
 d'activité radio sont significatives, et de surcroît l'avantage de S-CoSenS
 en termes de qualité de service est flagrant} (revoir sections
@@ -1529,7 +1597,7 @@ trafics réseau intenses, au vu des résultats forcément limités qu'apportera
 dans de telles conditions un tel mécanisme} (à cause notamment de la grande
 variabilité des durées de cycles)~;
 
-\item un mécanisme de type \lang{``phase-lock''} \emph{devrait être assez
+\item \emph{un mécanisme de type \lang{``phase-lock''} devrait être assez
 avantageux dans tous les cas pour envisager son implantation dans les
 protocoles MAC~/ RDC à durée de cycle fixe et~/ ou connue à l'avance},
 à condition bien sûr que la conception du protocole le permette.
@@ -1547,9 +1615,9 @@ protocoles MAC~/ RDC à durée de cycle fixe et~/ ou connue à l'avance},
 \sectionmark{Discussion~: protocoles MAC~/ RDC, contributions et conclusions}
 \label{SecDiscussContribConcluProtocolesMAC}
 
-Nos tests ont permis de tester et comparer deux implantations complètes
+Nos travaux ont permis de tester et comparer deux implantations complètes
 et fonctionnelles de deux protocoles MAC~/ RDC, ContikiMAC et S-CoSenS.
-Ces tests ont consisté en des scénarios simulant de lourdes charges
+Ces travaux ont consisté en des scénarios simulant de lourdes charges
 réseau, dans le but d'observer la capacité de ces protocoles à monter
 en charge, puis à les pousser dans leurs limites ultimes de fonctionnement~---
 tout en sachant qu'approcher la limite théorique de 250~Kbit/s de bande
@@ -1561,8 +1629,6 @@ réseau (et notamment les couches MAC et RDC).
 
 Nous avons, durant l'implantation de S-CoSenS sur RIOT OS, surmonté
 de nombreux problèmes dont nous avons discuté dans le présent chapitre.
-
-\newpage
 
 Ce faisant, nous avons \emph{fourni les contributions suivantes}~:
 
@@ -1592,19 +1658,19 @@ intense}, tandis que ContikiMAC (dans son implantation standard
 sous Contiki) est largement supérieur en terme de \lang{duty cycles}.
 
 \item Nous avons envisagé des \emph{contre-mesures pour gérer les erreurs
-liées à des problèmes de corruption mémoire} (comme l'écrasement de
-la pile système par d'autres données, à cause de l'espace mémoire
+liées à des problèmes de corruption mémoire} (comme l'écrasement par
+la pile système d'autres données, à cause de l'espace mémoire
 très limité sur les \lang{motes} de base).
 Notamment~--- sur les architectures matérielles dépourvues de circuit
 MPU dédié~--- la nécessité de surveiller régulièrement la pile système,
-\emph{préférablement via l'insertion automatique de code de vérification
-à la compilation} à des endroits stratégiques du chemin de code (appels
-de sous-programmes, interruptions).
+\emph{de préférence par l'insertion automatique de code de vérification,
+durant le processus de compilation,} à des endroits stratégiques du chemin
+de code (appels de sous-programmes, interruptions, etc.).
 
 \item Nous avons \emph{évalué l'influence des optimisations des
-implantations sur les performances}~--- notamment dans la gestion du bus
-SPI, selon le traitement des transmissions d'une façon sûre ou au contraire
-optimisée~; le choix de l'une ou l'autre des solutions impactant la vitesse
+implantations sur les performances}, notamment dans la gestion du bus SPI,
+selon le traitement des transmissions d'une façon sûre ou au contraire
+optimisée~: le choix de l'une ou l'autre des solutions impacte la vitesse
 de chargement des trames dans l'émetteur~/ récepteur radio d'un facteur
 2 à 3, cette accélération se faisant au détriment de la fiabilité.
 Notons toutefois que cette différence ne semble pas avoir changé
@@ -1614,17 +1680,15 @@ significativement les résultats globaux de nos comparaisons.
 algorithmiques au protocole S-CoSenS} (liées à l'optimisation des periodes
 de réveil de l'émetteur~/ récepteur radio, à l'estimation du trafic réseau
 et à l'optimisation du SNR), \emph{et à notre sens facilement généralisables
-à de nombreux protocoles MAC~/ RDC}, si ce n'est à toutes les couches basses
-des piles réseau des plates-formes logicielles destinées aux WSN pour la
-dernière d'entre elles.
+à de nombreux protocoles MAC~/ RDC}, si ce n'est~--- pour la dernière de
+ces trois améliorations~--- à toutes les couches basses des piles réseau
+des plates-formes logicielles destinées aux WSN.
 
 \end{itemize}
 
-\newpage
-
 En conclusion, nous avons constaté qu'il est essentiel pour un protocole
 MAC~/ RDC d'être capable de traiter efficacement une lourde charge réseau
-(ou des rafales de trafic), tout en gardant un \lang{duty cycle} minimal
+(ou des pointes de trafic), tout en gardant un \lang{duty cycle} minimal
 durant les périodes de faible trafic.
 
 Ces deux objectifs contradictoires doivent faire l'objet d'un compromis,
@@ -1638,23 +1702,24 @@ le trafic réseau quand celui-ci apparaît. L'économie d'énergie est le
 et~/ ou de vie des noeuds du WSN, mais ne doit jamais~--- selon nous~---
 se faire au détriment de la qualité de service <<~fonctionnelle~>>.
 
-\emph{C'est pourquoi nous pensons qu'un protocole MAC~/ RDC idéal est un
-protocole dont le \lang{``duty cycle''} doit varier en fonction du trafic,
-certes pour permettre d'optimiser la consommation d'énergie, mais jamais
-au prix de la perte de données à transmettre (sauf bien sûr dans les cas
-de saturation du médium radio).}
+\emph{C'est pourquoi nous pensons qu'un protocole MAC~/ RDC idéal
+est un protocole dont le \lang{``duty cycle''} doit varier dynamiquement
+en fonction du trafic, certes pour permettre d'optimiser la consommation
+d'énergie, mais jamais au prix de la perte de données à transmettre
+(sauf bien sûr dans les cas de saturation du médium radio).}
 
 \bigskip
 
-Pour finir, rappelons que lors de nos tests sur l'influence de
-l'optimisation des implantations sur les performances (section
+Pour finir, rappelons que lors de nos tests concernant l'influence
+de l'optimisation des implantations sur les performances (section
 \vref{SubsecOptim}), nous avions observé des incohérences dans les
 valeurs obtenues entre simulation et exécution sur matériel réel, tout
-particulièrement en ce qui concerne la plate-forme Zolertia Z1. Comme nous
-l'avions alors dit, nous allons maintenant étudier ce phénomène en détail
-dans la section \ref{SecLimInexactSimu} du chapitre suivant.
+particulièrement en ce qui concerne la plate-forme matérielle Zolertia Z1.
+Comme nous l'avions alors dit, nous allons maintenant étudier ce phénomène
+en détail dans la section \ref{SecLimInexactSimu} du chapitre suivant.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                 FIN DU CHAPITRE "PROTOCOLES MAC/RDC"                  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

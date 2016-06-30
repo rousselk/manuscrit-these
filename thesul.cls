@@ -20,8 +20,8 @@
 %% original source files, as listed above, are part of the
 %% same distribution. (The sources need not necessarily be
 %% in the same archive or directory.)
-\def\filedate{2013/10/06}
-\def\fileversion{v0.14}
+\def\filedate{2016/06/20}
+\def\fileversion{v0.15-KR}
 \def\docdate{06/10/2013}
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -208,6 +208,12 @@
     {{\UseEntryFont{ThesisJuryTitle}Composition du jury}}
 \newcommand\ThesisJuryTitle[1]%
     {\renewcommand{\@ThesisJuryTitle}{{\UseEntryFont{ThesisJuryTitle}#1}}}
+
+\newcommand{\@ThesisVersion}%
+        {\fbox{Entrer le numéro de version et la date}}
+\newcommand{\ThesisVersion}[2]%
+        {\renewcommand{\@ThesisVersion}{{\UseEntryFont{ThesisVersion}Version #1 du #2}}}
+
 \newcommand\LoriaLogo{%
     \vtop to0pt{%
       \hbox{}\hbox to0pt{\includegraphics[scale=.2]{tulloria}\hss}\vss}%
@@ -268,6 +274,8 @@
              {\TitlePageFontEncoding}{\TitlePageFontFamily}{m}{n}{10.95}{13}%
 \SetTULFont{ThesisFirstPageFoot}%
              {\TitlePageFontEncoding}{\TitlePageFontFamily}{bx}{n}{10}{14}%
+\SetTULFont{ThesisVersion}%
+             {\TitlePageFontEncoding}{\TitlePageFontFamily}{bx}{sl}{12}{16}%
 \newtoks\@jury@tokI
 \newtoks\@jury@tokII
 \newcommand\@tokc@t[3]{%
@@ -381,8 +389,8 @@
     \newpage
     \if@twoside
        \thispagestyle{empty}
-       \hbox{}
-       \par\vfill\@dcd\@p@ndor@
+       \begin{center}\@ThesisVersion\end{center}
+       \par\hrule\vfill\@dcd\@p@ndor@
        \newpage
        \addtocounter{page}{-2}%
     \else

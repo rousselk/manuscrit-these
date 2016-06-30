@@ -93,7 +93,7 @@ site Web du projet Contiki. Celle-ci montre comment télécharger et utiliser
 la distribution Linux dédiée au test du système, nommée \lang{``Instant
 Contiki''}, pour effectuer rapidement des simulations de réseaux de capteurs
 sans-fil~--- grâce à l'utilisation du simulateur \nom{Cooja} \cite{Cooja}
-fourni par le projet Contiki~--- puis télécharger des programmes d'exemples
+fourni par le projet Contiki~--- puis télécharger des programmes d'exemple
 sur du matériel (des \lang{motes} de type Zolertia Z1). Aucun document n'est
 disponible pour montrer et (plus important encore) expliquer aux
 développeurs les nombreuses fonctionnalités de Cooja~; aucun document pour
@@ -101,18 +101,18 @@ détailler comment programmer des applications avec Contiki~; aucune
 introduction signalant quelles sont les spécificités du développement
 embarqué sur des systèmes aussi contraints que les \lang{motes} constituant
 les réseaux de capteurs sans-fil (par opposition au développement
-<<~classique~>> sur PCs). Enfin, l'absence de documentation sur le
+<<~classique~>> sur PC). Enfin, l'absence de documentation sur le
 fonctionnement interne de Contiki, et sur les méthodes éventuelles
 pour adapter le système à ses propres besoins, est particulièrement
-regrettable pour qui souhaite mener des travaux de recherche et
-de développement appliqués avec, et surtout \emph{dans} ce système~---
-or, de telles initiatives d'exploitation <<~avancées~>> sont appelées
+regrettable pour qui souhaite mener des travaux concrets de recherche
+et de développement avec, et surtout \emph{dans} ce système~--- or,
+de telles initiatives d'exploitation <<~avancée~>> sont appelées
 à être relativement nombreuses, étant donné le statut d'OS pour WSN
 de référence que possède actuellement Contiki.
 
 En résumé, une telle absence de documentation raisonnablement accessible
 rend l'approche initiale de Contiki difficile pour les nouveaux développeurs,
-et contribue à leur rendre la courbe d'apprentissage relativement élevée.
+et contribue à leur imposer une courbe d'apprentissage relativement élevée.
 
 La principale source de documentation, en matière de développement sous
 Contiki, est la \lang{mailing-list}
@@ -121,7 +121,7 @@ Toute personne souhaitant développer sur cette plate-forme logicielle
 (qu'il s'agisse d'applications ou au niveau du système) ne peut espérer
 atteindre un quelconque but sérieux sans souscrire à cette liste, et
 demander de l'aide et des renseignements à ses membres. Bien que cette
-liste soit une source riche de renseignements, soit réactive, et en
+liste soit une source riche d'informations, soit réactive, et en
 général bien disposée à l'égard des nouveaux venus, on peut difficilement
 considérer qu'elle remplace de façon satisfaisante le manque de
 documentation technique et de tutoriels.
@@ -136,7 +136,7 @@ Ajoutons également que, si de nombreux exemples d'applications conçues
 avec le système Contiki sont fournis avec le code source du système,
 il n'y a par contre aucun exemple de code destiné à s'insérer dans
 le système lui-même (comme par exemple un \lang{plug-in} pour la pile
-réseau ou tout autre partie du c{\oe}ur du système). Le développement
+réseau ou toute autre partie du c{\oe}ur du système). Le développement
 au sein du système Contiki, par exemple pour l'adapter à ses besoins
 ou y rajouter des fonctionnalités, n'en est ainsi qu'encore plus
 difficile à apprendre et à maîtriser.
@@ -174,15 +174,15 @@ d'émission, le changement des adresses des noeuds, etc.) nécessitait
 d'accéder directement aux registres spécifiques de la puce radio, et faisait
 ainsi perdre l'avantage de la portabilité offert par l'utilisation d'un OS,
 ainsi que le principe de séparation des couches de la pile réseau (l'accès
-à de telles fonctionnalités étant souvent nécessaire depuis par exemple
+à de telles fonctionnalités étant souvent nécessaire par exemple depuis
 la couche MAC).
 
-Pour résoudre ce problème, nous avons proposé une extension de l'API des
+Pour résoudre ce problème, nous avons imaginé une extension de l'API des
 pilotes radio, permettant d'accéder à ces fonctionnalités via un mécanisme
 standard et flexible de <<~capacités~>> (\lang{``capabilities''}) génériques,
 le tout sans nuire à la compatibilité avec le code existant.
-Nous avons proposé l'ajout à l'API des pilotes radio Contiki de trois
-fonctionnalités permettant respectivement~:
+Concrètement, nous avons proposé l'ajout à l'API des pilotes radio Contiki
+de trois fonctions permettant respectivement~:
 \begin{enumerate}
 \item d'accéder à des constantes de configuration spécifiques à l'émetteur~/
 récepteur radio voulu (par exemple~: la puissance maximale d'émission en dB)~;
@@ -191,8 +191,8 @@ récepteur radio voulu (par exemple~: la puissance maximale d'émission en dB)~;
 appelé \lang{``capabilities''}~--- impactant le comportement de la radio
 (par exemple~: le canal radio employé, la ou les adresses, etc.)~;
 \end{enumerate}
-ces fonctionnalités supplémentaires s'obtenant en n'ajoutant qu'une
-charge minimale de code~: par l'ajout de trois pointeurs sur fonction
+ces capacités supplémentaires s'obtenant en n'ajoutant qu'une charge
+minimale de code~: par l'ajout de trois pointeurs sur fonction
 à l'implantation d'un pilote radio Contiki.
 
 Ces propositions ont été soumises, en tant que contributions, par le biais
@@ -215,20 +215,20 @@ which now is part of the new API.''}.
 \subsubsection{Pile réseau centrée sur un unique \lang{``packetbuf''}}
 \label{ParContikiPacketbuf}
 
-Une fonctionnalité unique de la pile réseau de Contiki est d'être centrée
-autour d'un unique \lang{buffer} destiné à contenir la trame réseau
-802.15.4 en cours de traitement (nommé \lang{``packetbuf''} dans la
-terminologie Contiki). Ce \lang{packetbuf} constitue ainsi la <<~zone de
-travail~>> incontournable pour les différentes couches de la pile réseau
-(comme nous allons le voir en section
+Une fonctionnalité unique de la pile protocolaire réseau de Contiki OS
+est d'être centrée autour d'un unique \lang{buffer}~--- destiné à contenir
+la trame réseau en cours de traitement~--- nommé \lang{``packetbuf''}
+selon la terminologie de Contiki. Ce \lang{packetbuf} constitue ainsi
+la <<~zone de travail~>> incontournable pour les différentes couches
+de la pile réseau (comme nous allons le voir en section
 \vref{ParContikiPileReseauComplexe}).
 
-Ce choix de conception a bien sûr été dicté pour épargner de la mémoire~:
+Ce choix de conception a bien sûr été fait pour épargner de la mémoire~:
 sur les noeuds constituant les capteurs sans-fil, cette ressource est
 extrêmement précieuse car limitée. Le code programme doit ainsi, pour les
 appareils les moins puissants, tenir dans quelques dizaines de kilo-octets
 de mémoire Flash, tandis que les données~--- dont font partie les trames
-radio émis et reçus~--- doivent se partager la place dans une RAM encore
+radio émises et reçues~--- doivent se partager la place dans une RAM encore
 plus restreinte (dont la taille ne dépasse parfois pas 2 kilo-octets).
 
 \medskip
@@ -238,12 +238,12 @@ entraîne plusieurs conséquences indésirables~:
 
 \begin{itemize}
 
-\item \emph{Le risque de pertes de trames.} Ce \lang{buffer} unique devant
-être utilisé par toutes les couches de la pile réseau, à tout moment, toute
+\item \emph{Le risque de perte de trames.} Ce \lang{buffer} unique devant
+être utilisé à tout moment par toutes les couches de la pile réseau, toute
 erreur dans la synchronisation entre les différents composants de cette
 pile réseau peut aboutir à l'écrasement du contenu du \lang{packetbuf},
 provoquant ainsi une perte de données. Le risque de l'arrivée d'une trame
-(venant d'être reçu depuis le canal radio) pendant le traitement d'autres
+(venant d'être reçue depuis le canal radio) pendant le traitement d'autres
 données par la pile réseau est particulièrement critique, étant donné que
 la réception de données depuis le réseau est, par nature, un évènement
 asynchrone et totalement imprévisible.
@@ -287,15 +287,16 @@ Dans le cadre de cette stratégie, les concepteurs de Contiki ont choisi
 de faire une distinction entre la couche \nom{RDC (\lang{Radio Duty
 Cycle})}~--- dont le rôle est de contrôler comment la radio est mise
 en activité et à l'arrêt durant les cycles de fonctionnement (\lang{``duty
-cycles''}) du réseau, afin d'implanter une stratégie efficace d'économie
-d'énergie pour les noeuds du réseau~--- et la couche \nom{MAC (\lang{Media
-Access Control})}~--- qui en théorie se charge uniquement d'ordonnancer
-et de séquencer temporellement la transmission des trames sur le réseau.
+cycles''}) d'un réseau, afin d'implanter une stratégie efficace d'économie
+d'énergie pour les noeuds dudit réseau~--- et la couche \nom{MAC
+(\lang{Medium Access Control})}~--- qui, en théorie, se charge uniquement
+d'ordonnancer et de séquencer temporellement la transmission des trames
+sur le réseau.
 
 En pratique, la plupart des protocoles MAC modernes gèrent simultanément
 ces deux aspects, qui sont intimement liés l'un à l'autre. Ces protocoles
 peuvent ainsi s'adapter dynamiquement pour maximiser l'efficacité du
-réseau (notion de Qualité de Service~: QoS) \emph{et} optimiser
+réseau (notion de Qualité de Service~: QdS) \emph{et} optimiser
 la consommation d'énergie, le tout en fonction du trafic réseau et
 de son évolution en cours d'exécution. X-MAC \cite{XMAC}, RI-MAC
 \cite{RIMAC}, S-CoSenS \cite{CosensJournal} et iQueue-MAC \cite{iQueueMAC}
@@ -316,8 +317,8 @@ prouve implicitement que ContikiMAC joue bien les deux rôles à lui seul.
 \subsubsection{Complexité excessive de la pile réseau}
 \label{ParContikiPileReseauComplexe}
 
-La conséquence des deux points précédents \vref{ParContikiPacketbuf}
-et \vref{ParContikiMACRDC} est que la pile réseau de Contiki souffre
+La conséquence des deux points précédents (\vrefrange{ParContikiPacketbuf}
+{ParContikiMACRDC}) est que la pile réseau de Contiki souffre
 d'une complexité déroutante.
 
 Celle-ci inclut déjà un nombre très élevé de couches, pour les seules
@@ -336,7 +337,7 @@ les trames au format IEEE 802.15.4)~;
 \item[3) RDC~:] la couche \lang{Radio Duty Cycle} (voir section
 \vref{ParContikiMACRDC})~;
 
-\item[4) MAC~:] l'implantation du protocole \lang{Media Access Control},
+\item[4) MAC~:] l'implantation du protocole \lang{Medium Access Control},
 sans la gestion de l'alimentation de la radio (là encore, voir section
 \vref{ParContikiMACRDC})~;
 
@@ -365,7 +366,7 @@ le système difficile à comprendre et, plus encore, à maintenir.
 
 Un exemple de dépendance difficilement compréhensible est la dépendance
 de fichiers comme \texttt{'contikimac.c'} ou \texttt{'nullrdc.c'}~--- donc
-appartenant de la couche RDC~--- à des fichiers comme \texttt{'net/rime.h'}
+appartenant à la couche RDC~--- à des fichiers comme \texttt{'net/rime.h'}
 ou \texttt{'net/rime/rimestats.h'}~--- c'est à dire à la pile protocolaire
 Rime de plus haut niveau, dont l'utilisation n'est de surcroît pas
 supposée être systématique (uIP peut être utilisée à la place).
@@ -378,19 +379,21 @@ Ce schéma montre clairement la grande complexité de l'ensemble.
 \begin{figure}[!hbt]
 \centering
 \includegraphics[width=12.5cm]{images/ch4-contiki-netstack.png}
-\flcaption{Représentation fonctionnelle de l'architecture de la pile
-réseau de Contiki.
+\flcaption{Représentation fonctionnelle des dépendances au sein
+de l'architecture de Contiki OS.
 (Source~: \cite{BlogJUdit})}
 \label{FigArchiReseauContiki}
 \end{figure}
 
-Cette complexité, combinée avec le manque de documentation~--- notamment
-de références techniques~--- fait de toute tentative de contribution au code
-de Contiki, et notamment de sa pile réseau, une tâche difficile, pénible
-et sujette à de nombreuses erreurs.
+Cette complexité, combinée avec le manque de documentation (notamment
+de références techniques), fait de toute tentative de contribution au code
+de Contiki~--- et notamment de sa pile réseau~--- une tâche difficile,
+pénible et sujette à de nombreuses erreurs.
+
+\bigskip
 
 En outre, comme ces difficultés sont des conséquences directes des principes
-fondamentaux ayant présidés à la conception du système et de sa pile réseau,
+fondamentaux ayant présidé à la conception du système et de sa pile réseau,
 il est difficilement envisageable de corriger ces défauts sans devoir
 changer en profondeur l'architecture interne du système, ce qui
 impliquerait bien évidemment des incompatibilités majeures (et donc
@@ -405,16 +408,16 @@ critique.
 
 Pour implanter les protocoles avancés que nous avons décrit en section
 \vref{SubsecProtoMACavances} du présent document, il est nécessaire de
-gérer les évènements système (tels que les interruptions) avec réactivité~---
+gérer les évènements système (comme les interruptions) avec réactivité~---
 c'est-à-dire avec un délai de latence minimal~--- et flexibilité. Ces
 protocoles reposent en effet sur un \lang{timing} précis pour assurer
 une synchronisation efficace entre les différents noeuds et autres
 appareils appartenant aux différents réseaux de capteurs sans-fil (PANs),
-permettant ainsi de ne faire fonctionner l'émetteur~/ récepteur radio
-de ces appareils seulement quand cela est nécessaire. L'émetteur~/
-récepteur radio est en effet de loin le composant le plus gourmand en
-énergie dans ces appareils, et le mettre hors fonction est l'un des
-principaux moyens d'augmenter la durée de vie de leur batterie.
+permettant ainsi de faire fonctionner l'émetteur~/ récepteur radio des
+noeuds seulement quand cela est nécessaire. L'émetteur~/ récepteur radio
+est en effet le composant le plus gourmand en énergie dans ces noeuds,
+et le mettre hors fonction est l'un des principaux moyens d'augmenter
+la durée de vie de leur batterie.
 
 Pour parvenir à une synchronisation temporelle suffisamment précise, nous
 avons besoin d'une plate-forme logicielle offrant des fonctionnalités
@@ -442,7 +445,7 @@ Pour tenter de pallier ce problème, Contiki propose une fonctionnalité
 dédiée à la gestion des évènements en temps-réel, nommée
 \nom{\texttt{rtimer}}. Ce mécanisme permet d'outrepasser l'ordonnanceur
 du noyau de Contiki, et d'utiliser un \lang{timer} matériel (c'est-à-dire
-implanté comme périphérique physique dans le microcontrôleur au coeur
+implanté comme périphérique physique dans le microcontrôleur au c{\oe}ur
 du noeud) pour déclencher une fonction choisie par l'utilisateur.
 Malheureusement, ce mécanisme souffre de sévères limitations~:
 
@@ -450,11 +453,11 @@ Malheureusement, ce mécanisme souffre de sévères limitations~:
 
 \item Une seule et unique instance de \texttt{rtimer} est disponible pour
 tout le système~; par conséquent, une seule tâche en temps-réel peut être
-programmée ou exécutée à chaque instant. Cette limitation rend le
-développement de programmes temps-réel un tant soit peu complexes~---
-tel un protocole MAC~/ RDC, ou pire encore une pile réseau complète, devant
-gérer simultanément plusieurs délais précis~--- extrêmement difficile,
-sinon impossible.
+programmée ou exécutée à chaque instant. Cette limitation rend la
+conception de programmes temps-réel un tant soit peu complexes~---
+tel un protocole MAC~/ RDC, ou pire encore une pile réseau complète,
+devant gérer simultanément plusieurs délais précis~--- plus difficile
+à gérer et implémenter.
 
 \item De plus, il est dangereux, pour la stabilité du système, d'exécuter
 depuis une fonction déclenchée par \texttt{rtimer} la quasi-totalité
@@ -488,12 +491,16 @@ peu fonctionnelle. Suite à cet échec, nous avons donc définitivement
 abandonné l'idée d'utiliser Contiki comme plate-forme logicielle pour
 nos travaux de thèse, la présence de fonctionnalités temps-réel étant
 indispensable pour pouvoir~:
+
 \begin{itemize}
+
 \item synchroniser de façon suffisamment précise les différents noeuds 
 des WSN~;
+
 \item ou même, ne serait-ce que pour respecter les durées des diverses
-périodes délais et donc implanter de façon satisfaisante nos protocoles
-MAC~/ RDC avancés.
+périodes et donc implanter de façon satisfaisante nos protocoles MAC~/ RDC
+avancés.
+
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -560,12 +567,12 @@ ou noir (d'où l'acronyme BSOD).
 
 Dans ces systèmes destinés à l'informatique <<~lourde~>> (des PC
 aux macro-ordinateurs), \texttt{panic()} est une fonction interne
-au noyau, car celui-ci peut s'appuyer sur des dispositifs de gestion
-matérielle de la mémoire (notamment une \nom{MMU}~: unité de gestion
+au noyau, car ce dernier s'appuie sur des dispositifs matériels de
+gestion de la mémoire (à savoir une \nom{MMU}~: unité de gestion
 de mémoire), rendant la majorité des programmes~--- nommément
 tous ceux ne s'exécutant pas en <<~mode privilégié~>> ou <<~espace
 mémoire noyau~>>, c'est-à-dire normalement toutes les applications
-lancées par l'utilisateur~--- incapables d'endammager les structures
+lancées par l'utilisateur~--- incapables d'endommager les structures
 de données et autres ressources vitales pour l'exécution du système.
 Ces programmes ne manipulent en effet, via le fonctionnement d'une MMU
 en mode <<~non privilégié~>> ou <<~utilisateur~>>, que des adresses
@@ -592,7 +599,7 @@ Malheureusement, toutes les architectures de processeurs embarqués
 n'offrent pas ce mécanisme de MPU~: il n'existe pas dans les
 architectures AVR et MSP430, et n'est qu'optionnel pour les ARM
 (notamment Cortex-M), beaucoup de microcontrôleurs implantant cette
-architecture font ainsi l'impasse sur ce mécanisme.
+dernière architecture font ainsi l'impasse sur ce mécanisme.
 
 Il faut également préciser que les applications (souvent uniques) d'un
 système embarqué ayant régulièrement besoin d'accéder directement aux
@@ -624,7 +631,7 @@ redémarrés, réduisant ainsi l'indisponibilité d'un appareil fonctionnant
 sous RIOT au minimum~; le choix entre les deux comportements se fait
 via une constante de compilation.
 
-Cette contribution s'est vue décernée le titre de \emph{``PR of the
+Cette contribution s'est vue décerner le titre de \emph{``PR of the
 month''} pour le mois de février 2014 par le projet RIOT OS.
 
 Cette contribution utilise une autre de nos contributions implantant
@@ -640,9 +647,9 @@ utilisée de façon industrielle (notamment avec Contiki).
 
 \smallskip
 
-La plupart des systèmes d'exploitation visant la portabilité (comme
+Dans la plupart des systèmes d'exploitation visant la portabilité (comme
 par exemple Unix~/ Linux, ou les différentes déclinaisons de Microsoft
-Windows NT), la majorité du code du système est conçu de façon générique,
+Windows NT), la majorité du code du système est conçue de façon générique,
 c'est-à-dire avec une structure et un fonctionnement indépendants de la
 plate-forme matérielle sous-jacente.
 
@@ -665,11 +672,11 @@ Cette couche d'abstraction matérielle se charge notamment, sous RIOT OS,
 d'assurer le support des changements de contexte lors des basculements entre
 tâches (en support à l'ordonnanceur), l'implantation des fonctions concernant
 les \lang{timers} ou les différents périphériques implantés au sein du
-microcontrôleur, ainsi qu'à l'accès aux entrées~/ sorties (GPIO). Du point
+microcontrôleur, ainsi que l'accès aux entrées~/ sorties (GPIO). Du point
 de vue de l'implantation, la couche d'abstraction matérielle peut être vue
 comme un ensemble de pilotes (\lang{``drivers''}) chargés d'implanter l'API
 prédéfinie entre cette couche et le reste du système d'exploitation~;
-ces pilotes consistent en général à lire et écrire les registres matériels
+ces pilotes doivent en général lire et écrire les registres matériels
 de façon adéquate, en fonction des opérations demandées.
 
 \smallskip
@@ -688,10 +695,10 @@ cas, le code commun destiné à supporter l'architecture MSP430 existait déjà~
 nous n'avons ainsi pas eu à nous occuper de cette partie MCU pour effectuer
 notre portage.
 
-Dans le cas de RIOT, cette partie de la couche d'abstraction matérielle
-se charge notamment des opérations liées aux registres et mécanismes du
-c{\oe}ur du microcontrôleur~: par exemple de l'implantation des changements
-de contexte lors des basculements de tâche.
+Cette partie de la couche d'abstraction matérielle se charge notamment des
+opérations liées aux registres et mécanismes du c{\oe}ur du microcontrôleur~:
+par exemple de l'implantation des changements de contexte lors des
+basculements entre tâches.
 
 \item Une partie <<~\emph{périphériques}~>> regroupant des pilotes génériques
 pour des circuits intégrés communs, susceptibles d'être retrouvés dans
@@ -705,7 +712,7 @@ du code <<~de liaison~>> (\lang{``glue''} en anglais) spécifique~---
 impliquant souvent un bus géré par le microcontrôleur comme SPI ou
 I\textsuperscript{2}C~--- permettant leur mise en {\oe}uvre sur chaque
 plate-forme matérielle différente. Ce code de liaison est implanté dans
-la dernière partie de la couche d'abstraction matérielle ci-dessous.
+la dernière partie de la couche d'abstraction matérielle décrite ci-dessous.
 
 \item Une partie <<~\emph{plate-forme}~>> regroupant les éléments
 véritablement spécifiques à une plate-forme matérielle donnée. Elle
@@ -732,7 +739,7 @@ SPI du microcontrôleur.
 Nous avons \emph{débogué les portages de RIOT OS sur MSP430}~--- plus
 précisément~: la portion spécifique de la couche d'abstraction matérielle
 de l'ordonnanceur chargée de traiter les changements de contexte
-lors du basculement de tâches \cite{PRriotFix2MSP430}
+lors des basculements entre tâches \cite{PRriotFix2MSP430}
 \cite{PRriotFix3MSP430} \cite{PRriotFix1MSP430}~--- rendant ainsi RIOT
 robuste et prêt à l'usage en production sur les appareils basés sur
 l'architecture MSP430.
@@ -748,7 +755,7 @@ de déboguage directement présentes dans le matériel, en général rendues
 accessibles via le protocole JTAG. La plupart des microcontrôleurs
 sur lesquels sont basées les \lang{motes} offrent des broches spécifiques
 dédiées à ce mécanisme de déboguage~; il faut néanmoins que la \lang{mote}
-elle-même rendent ces signaux accessibles via un port quelconque, ce qui
+elle-même rende ces signaux accessibles via un port quelconque, ce qui
 n'est pas évident. En outre, un adaptateur JTAG, presque toujours spécifique
 de l'architecture du microcontrôleur à déboguer, est nécessaire pour relier
 le matériel à déboguer et le PC~/ station de travail du développeur.
@@ -802,7 +809,7 @@ interruptions pendant le changement de contexte de tâche, permettant
 en cours d'arrêt, ce qui bien évidemment corrompait le plus souvent
 le contexte sauvegardé, provoquant le plantage du système lors de la
 réactivation de la tâche touchée. Cette réactivation intervenant de façon
-non déterministe, en fonction de la charge du système et de sa gestion de
+non déterministe, en fonction de la charge du système et de sa gestion par
 l'ordonnanceur, on comprend ainsi pourquoi ces plantages intervenaient
 sans raison \lang{a priori} discernable. Nous avons donc, grâce aux
 fonctions avancées de déboguage et traçage de MSPSim, pu comprendre
@@ -827,7 +834,7 @@ par le compteur du \lang{timer} voulu \cite{PRriotFix1MSP430}~;
 \lang{``ticks''} de \lang{timers} pour l'implantation du mécanisme
 \texttt{hwtimer} sur MSP430 \cite{PRriotFix3MSP430}.
 \end{enumerate}
-Ces deux erreurs étaient dues à la différence de types entre les valeurs
+Ces deux erreurs étaient dues à la différence de type entre les valeurs
 calculées par les implantations des fonctionnalités liées aux mécanismes
 temps-réel de \texttt{hwtimer}~--- utilisant des entiers~32 bits~--- et
 les compteurs des \lang{timers} matériels des MSP430~--- qui ne sont
@@ -870,7 +877,7 @@ l'avancée du projet RIOT OS. Celles-ci se divisent en deux groupes~:
 
 \item les contributions de \emph{déboguage}~:
 \begin{itemize}
-\item réparation du mécanisme d'échanges de données entre microcontrôleur et
+\item réparation du mécanisme d'échange de données entre microcontrôleur et
 émetteur~/ récepteur radio sur Zolertia Z1, en corrigeant le test vérifiant
 la bonne émission d'un octet sur le bus SPI (retrait d'une négation logique
 erronée) \cite{PRriotDebug9},
@@ -889,8 +896,8 @@ architecture MSP430, en ajoutant un <<~délai d'attente~>> (instruction
 \texttt{NOP}) après l'activation ou la désactivation générale des
 interruptions au niveau du microcontrôleur (comme recommandé dans les
 manuels de TI), et en s'assurant que les interruptions sont bien activées
-avant l'entrée en mode basse consommation (pour pouvoir sortir de celui-ci)
-\cite{PRriotDebug10},
+avant l'entrée en mode basse consommation (pour pouvoir sortir de ce
+dernier) \cite{PRriotDebug10},
 \item fiabilisation de l'alignement du pointeur de pile (registre SR)
 lors de la création de threads \cite{PRriotDebug1},
 \item fiabilisation du processus de \lang{flashage} des applications sur
@@ -920,9 +927,8 @@ matérielle \cite{PRriotEnh1},
 au noyau de RIOT (notamment employée par la gestion des erreurs fatales
 pour réactiver au plus vite un système planté en mode production, voir
 \vref{ParRIOTCorePanic}) \cite{PRriotEnh5} \cite{PRriotEnh3},
-\item définition d'attributs de fonctions <<~portables~>>
-\cite{PRriotEnh4},
-\item possibilité pour un thread de s'envoyer un message à lui-même
+\item définition d'attributs de fonction <<~portables~>> \cite{PRriotEnh4},
+\item possibilité pour un thread d'envoyer un message à lui-même
 (pour permettre par exemple les appels de fonction retardés~---
 \lang{``deferred procedure calls''} en anglais) \cite{PRriotEnh8},
 \item ajout d'une option pour la gestion du \lang{``CCA threshold''}
@@ -949,7 +955,7 @@ et adéquate dans les nouvelles versions de RIOT OS.}
 Grâce à toutes ces avancées, nous avons maintenant une plate-forme
 logicielle robuste et offrant les fonctionnalités nécessaires pour
 développer nos protocoles MAC~/ RDC à hautes performances~--- notamment
-ceux basés sur l'ordonnancement temporel (par exemple~: TDMA).
+ceux basés sur l'ordonnancement temporel (TDMA).
 C'est pourquoi nous avons implanté et testé S-CoSenS sur RIOT OS lors des
 expériences que nous décrirons au chapitre \vref{ChProtocolesMAC}.
 
@@ -961,11 +967,11 @@ Depuis que lesdites expériences du chapitre \ref{ChProtocolesMAC} ont
 été menées, RIOT OS a continué à évoluer de façon rapide et profonde~---
 et tout particulièrement sa pile réseau, qui a fait l'objet d'une refonte
 totale. Cette évolution étant potentiellement amenée à modifier, non
-seulement les résultats des expériences présentées plus haut, mais aussi
+seulement les résultats des expériences citées ci-dessus, mais aussi
 ceux des travaux présentés plus loin au chapitre \vref{ChValidation}
 (et notamment à influer sur les problèmes détaillés dans ce dernier
 chapitre), nous allons maintenant procéder à une analyse détaillée
-et critique de cette toute nouvelle pile réseau.
+et critique de cette nouvelle pile réseau.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1432,10 +1438,10 @@ Ainsi, nous en avons dégagé \emph{les contributions suivantes}~:
 
 \item Nous avons d'abord~--- dans le chapitre \ref{ChEtatArt}~---
 \emph{passé en revue les OS} classiquement utilisés dans le domaine des
-réseaux de capteurs sans-fil (TinyOS, Contiki, et autres~--- cf. section
-\vref{SecOSWSN}), analysé leurs faiblesses, et \emph{démontré
-pourquoi ceux-ci ne pouvaient servir de base aux développement
-de protocoles MAC~/ RDC avancés}.
+réseaux de capteurs sans-fil (comme TinyOS, entre autres~--- cf. section
+\vref{SecOSWSN}), analysé leurs faiblesses, et \emph{démontré pourquoi
+ceux-ci ne pouvaient servir de base au développement de protocoles
+MAC~/ RDC avancés}.
 
 \item Nous avons montré que \emph{Contiki OS, par sa conception,
 est mal adapté au développement de protocoles MAC~/RDC à hautes
@@ -1454,18 +1460,18 @@ et son portage sur une nouvelle plate-forme matérielle}
 Parmi ces contributions, la plupart sont totalement spécifiques à RIOT
 (corrections de bogues, portage sur Z1, améliorations de parties
 spécifiques de l'implantation). \\
-Toutefois, \emph{une partie de ces contributions~--- en particulier
-celles offrant un mécanisme de gestion des erreurs fatales
+Toutefois, \emph{certaines de ces contributions~--- en particulier
+celle offrant un mécanisme de gestion des erreurs fatales
 \cite{PRriotPanic}} permettant de <<~geler~>> l'appareil en mode déboguage
-(pour faciliter une analyse \lang{post mortem} du système, ou au contraire
+(pour faciliter une analyse \lang{post mortem} du système), ou au contraire
 un redémarrage immédiat en mode production~--- peuvent avantageusement être
 adaptées à n'importe quel système d'exploitation ne disposant pas déjà de
 telles fonctions. On peut faire la même remarque pour \emph{la primitive
 système permettant le redémarrage immédiat par logiciel du système}
-\cite{PRriotEnh5} (sans devoir attendre~/ dépendre d'un \lang{watchdog}).
+\cite{PRriotEnh5}.
 
 \item Nous avons enfin effectué \emph{une analyse critique de la nouvelle
-pile réseau <<~gnrc~>> de RIOT, notammanent de ses couches basses, en
+pile réseau <<~gnrc~>> de RIOT, notamment de ses couches basses, en
 recensant ses avantages et ses inconvénients} (le principal étant sa
 relative complexité et sa potentielle incompatibilité avec des matériels
 trop limités). \emph{Nous avons évoqué une possible solution à ce dernier
@@ -1479,22 +1485,21 @@ On peut également citer ici \emph{notre contribution concernant
 la gestion des erreurs liées aux débordements mémoire}, abordée dans
 le chapitre suivant en section \vref{SubsecStabl}, consistant en
 une proposition mêlant plate-forme logicielle et compilateur(s),
-laquelle est susceptible de concerner \emph{tout système d'exploiation
+laquelle est susceptible de concerner \emph{tout système d'exploitation
 destiné au monde de l'embarqué}.
 
 \bigskip
 
 Notre plate-forme logicielle de référence, RIOT OS, étant maintenant
 clairement et définitivement choisie, améliorée et déboguée~--- en partie
-grâce à nos contributions~--- nous allons maintenant commencer à détailler
+grâce à nos contributions~---, nous allons maintenant commencer à détailler
 les  travaux d'expérimentation effectués dans cette thèse. Nous commencerons
-par l'implantation du plus simple des protocoles à hautes performances
-décrit en section \vref{SubsecProtoMACavances}, S-CoSenS, sous RIOT OS
+par l'implantation sous RIOT OS du plus simple des protocoles à hautes
+performances décrit en section \vref{SubsecProtoMACavances}, S-CoSenS,
 dans le chapitre \ref{ChProtocolesMAC} suivant.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%             FIN DU CHAPITRE "PLATES-FORMES LOGICIELLES"               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 

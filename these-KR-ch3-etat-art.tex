@@ -580,10 +580,10 @@ par les noeuds précédents. Ce mécanisme d'adaptation porte le nom
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-s-mac.png}
+\includegraphics[height=6.75cm]{images/ch3-s-mac.png}
 \flcaption{\lang{Adaptative listening} entre trois noeuds suivant
 le protocole S-MAC.
-(Source~: \cite{coursEnsem})}
+(D'après \cite{coursEnsem})}
 \label{FigSMACadapt}
 \end{figure}
 
@@ -628,7 +628,7 @@ réseau.
 \centering
 \includegraphics[width=12.5cm]{images/ch3-s-mac-vs-t-mac.png}
 \flcaption{Comparaison du fonctionnement de S-MAC et T-MAC.
-(Source~: \cite{coursEnsem})}
+(D'après \cite{coursEnsem})}
 \label{FigSMACvsTMAC}
 \end{figure}
 
@@ -679,9 +679,9 @@ est représenté dans la figure \vref{FigBMAC}.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-b-mac.png}
+\includegraphics[width=12.75cm]{images/ch3-b-mac.png}
 \flcaption{Schéma de fonctionnement de B-MAC (protocole LPL typique).
-(Source~: \cite{coursEnsem})}
+(D'après \cite{coursEnsem})}
 \label{FigBMAC}
 \end{figure}
 
@@ -730,9 +730,9 @@ proprement dites.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-x-mac.png}
+\includegraphics[width=12.75cm]{images/ch3-x-mac.png}
 \flcaption{Schéma de fonctionnement du protocole X-MAC.
-(Source~: \cite{coursEnsem})}
+(D'après \cite{coursEnsem})}
 \label{FigXMAC}
 \end{figure}
 
@@ -755,19 +755,19 @@ dans la figure \vref{FigContikiMAC}.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-contikimac.png}
-\flcaption{Schéma de fonctionnement du protocole ContikiMAC.
-(Source~: \cite{coursEnsem})}
+\includegraphics[width=12.75cm]{images/ch3-contikimac.png}
+\flcaption{Fonctionnement du protocole ContikiMAC.
+(D'après \cite{coursEnsem})}
 \label{FigContikiMAC}
 \end{figure}
 
 Autre particularité~: chaque noeud effectue \emph{deux} CCA à chaque réveil
 cyclique, et ne retombe en sommeil que si ces deux CCA ont indiqué
-la non-occupation du canal radio. (Ces deux CCA, séparés par un délai
-calculé à partir du délai standard entre émission de trames (DIFS)
+la non-occupation du canal radio. Ces deux CCA, séparés par un délai
+calculé à partir du délai standard entre émission de trames~--- DIFS~---
 et la taille minimale d'une trame 802.15.4, permettent de consommer
 moins d'énergie qu'une longue écoute. Ces deux CCA ont ainsi la durée
-minimale nécessaire pour déterminer ou non l'occupation du médium radio.)
+minimale nécessaire pour déterminer ou non l'occupation du médium radio.
 
 Enfin, signalons que les versions récentes de ContikiMAC bénéficient d'une
 optimisation supplémentaire~: après un envoi réussi, le noeud émetteur
@@ -801,7 +801,7 @@ regroupe les cas où plusieurs paires de noeuds émetteurs/récepteurs,
 ayant chacune indépendemment des données à se transmettre, se gênent
 mutuellement si elles sont partiellement à portée l'une de l'autre.
 La figure \vref{FigCollisionsCachees} illustre la survenue
-d'un de ces problèmes~: les deux récepteurs sont à portée des deux
+de ces problèmes~: les deux récepteurs sont à portée des deux
 émetteurs, ces derniers étant par contre incapables de se détecter
 mutuellement, ce qui provoque une collision entre les trames transmises
 par chacun des deux émetteurs.
@@ -809,11 +809,11 @@ par chacun des deux émetteurs.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-collisions-cachees.png}
-\flcaption{Survenue d'une <<~collision cachée~>> entre deux paires
-de noeuds menant chacun une transmission distincte, empêchant
+\includegraphics[width=12.75cm]{images/ch3-collisions-cachees.png}
+\flcaption{Survenue de <<~collisions cachées~>> entre deux paires
+de noeuds menant chacune une transmission distincte, empêchant
 la réussite des deux communications.
-(Source~: \cite{coursEnsem} d'après \cite{RIMAC})}
+(D'après \cite{coursEnsem} et \cite{RIMAC})}
 \label{FigCollisionsCachees}
 \end{figure}
 
@@ -914,7 +914,7 @@ d'autant plus flagrant que le débit augmente.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=12.5cm]{images/ch3-ri-vs-si.png}
+\includegraphics[width=12.75cm]{images/ch3-ri-vs-si.png}
 \flcaption{Comparaison entre protocoles \lang{``Receiver-Initiated''} (LPP)
 et \lang{``Sender-Initiated''} (LPL) face à la montée en charge
 du trafic réseau.
@@ -973,7 +973,7 @@ efficace pendant les débits intenses (ou les pointes de trafic réseau).
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=10cm]{images/ch3-tdma-vs-csma.png}
+\includegraphics[width=9.5cm]{images/ch3-tdma-vs-csma.png}
 \flcaption{Comparaison de l'efficacité entre méthodes basée sur la
 contention (CSMA) et sur l'ordonnancement (TDMA) en fonction du débit
 réseau.
@@ -1252,14 +1252,14 @@ L'ensemble des deux premières périodes constitue la \lang{subframe},
 dont la durée est calculée à l'avance, en fonction du trafic
 réseau observé jusqu'alors.
 
-La figure \vref{FigCycleSCoSenS} montre clairement l'adaptation
-du cycle S-CoSenS à un trafic réseau moyen (a), intense (b) et faible (c).
+La figure \vref{FigCycleSCoSenS} montre clairement l'adaptation du cycle
+S-CoSenS à un trafic réseau respectivement moyen, intense et faible.
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=10cm]{images/ch3-s-cosens-cycle.png}
+\includegraphics[width=11.5cm]{images/ch3-s-cosens-cycle.png}
 \flcaption{Principe d'un cycle de fonctionnement d'un noeud coordinateur
-S-CoSenS. (Source~: \cite{TheseBNefzi})}
+\mbox{S-CoSenS}. (D'après \cite{TheseBNefzi})}
 \label{FigCycleSCoSenS}
 \end{figure}
 
@@ -1304,7 +1304,7 @@ de transmission (TP).
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[width=9.5cm]{images/ch3-s-cosens-transmission.png}
+\includegraphics[width=11.5cm]{images/ch3-s-cosens-transmission.png}
 \flcaption{Transmission d'une trame avec le protocole S-CoSenS.}
 \label{FigSCoSenSTransmission}
 \end{figure}
@@ -1547,10 +1547,10 @@ Nous citerons ici, à titre d'exemple, les travaux menés à l'Université
 de Strasbourg pour améliorer les protocoles basés sur la technique LPL,
 grâce notamment à un mécanisme nommé T-AAD (\lang{lightweight ``Traffic
 Auto-ADaptations''} \cite{T-AAD}, conçu pour permettre aux protocoles LPL
-de mieux gérer les pointes (\lang{``bursts''} de trafic réseau.
+de mieux gérer les pointes (\lang{``bursts''}) de trafic réseau.
 
-Le mécanisme \nom{T-AAD} consiste à adapter automatiquement les paramètres
-des protocoles MAC dynamiquement en fonctions des variations du trafic
+Le mécanisme \nom{T-AAD} consiste à adapter dynamiquement les paramètres
+de configuration des protocoles MAC en fonction des variations du trafic
 réseau. Le principal paramètre d'un protocole LPL étant la durée de la
 période de sommeil (ici appelée $ST$) entre deux CCA consécutifs~---
 c'est-à-dire en fait la durée du cycle de ces protocoles LPL~---,
@@ -1568,9 +1568,9 @@ T-AAD utilise alors cette information pour calculer le temps durant lequel
 il va passer sa durée de cycle à $ST_{min}$ pour gérer cette charge à venir~:
 cette durée de fonctionnement <<~intensif~>> est nommée $T_{adapt}$.
 Une fois la durée $T_{adapt}$ écoulée, le noeud revient à la durée de cycle
-par défaut $ST_{max}$. (Notons que quand un noeud émetteur n'émet qu'une
+par défaut $ST_{max}$. (Notons que quand les émetteurs ne produisent qu'une
 charge réseau modérée, $T_{adapt}$ sera calculée à la valeur 0, et
-le récepteur gardera alors un cycle standard de durée $ST_{max}$.)
+un récepteur gardera alors un cycle standard de durée $ST_{max}$.)
 
 Le but du mécanisme T-AAD est donc de rendre les protocoles LPL
 <<~classiques~>> (comme X-MAC ou ContikiMAC) auto-adaptatifs à la charge
@@ -1589,8 +1589,8 @@ peut être considérée comme mieux adaptée à la cible choisie.
 
 Ce mécanisme T-AAD a été implémenté et testé pour améliorer des
 protocoles LPL classiques comme X-MAC \cite{T-AAD} \cite{T-AAD-demo}
-(se reporter respectivement à la section \vref{ParXMAC} pour les détails
-sur le fonctionnement <<~standard~>> de ce protocole). Les changements
+(se reporter à la section \vref{ParXMAC} pour les détails sur le
+fonctionnement <<~standard~>> de ce protocole). Les changements
 apportés par le mécanisme T-AAD dans le fonctionnement de X-MAC sont
 illustrés dans la figure \vref{Fig-TAAD-XMAC}.
 
@@ -1607,7 +1607,7 @@ relativement facile à implémenter et peu coûteux en occupation mémoire
 et en temps processeur~--- a permis d'améliorer significativement les 
 performances (notamment en termes de délais de transmission) et
 l'efficacité énergétique du protocole X-MAC ainsi modifié. Ces améliorations
-ont été constatées par des tests faits sur du matériel réel, à savoir~:
+ont été constatées lors de tests faits sur du matériel réel, à savoir~:
 les noeuds du \lang{testbed} IoT-LAB \cite{IotLAB}.
 
 \bigskip
@@ -1616,73 +1616,73 @@ Plus récemment, cette même équipe a publié plusieurs versions améliorées
 de ContikiMAC (cf. section \ref{ParContikiMAC} pour plus de détails sur
 ce protocole MAC~/ RDC), destinées à être mieux adaptées aux noeuds mobiles,
 nommées M-ContikiMAC et ME-ContikiMAC \cite{ME-ContikiMAC} (M signifiant ici
-\lang{``Mobile''}, et ME \lang{``Mobile Enhanced''}.
+\lang{``Mobile''}, et ME \lang{``Mobile Enhanced''}).
 
 Le protocole \nom{M-ContikiMAC} consiste à utiliser pour émettre ses trames
 un mode de transmission \lang{``anycast''}, permettant à n'importe quel
-noeud à portée de recevoir un paquet. Contrairement toutefois au mode
-\lang{``broadcast''} que nous avons vu pour l'envoi de \lang{``beacons''},
-en mode \lang{``anycast''} tout récepteur est tenu de renvoyer un paquet
+noeud à portée de recevoir une trame. Contrairement toutefois au mode
+\lang{``broadcast''} que nous avons vu pour l'envoi de \lang{beacons},
+en mode \lang{``anycast''} tout récepteur est tenu de renvoyer une trame
 d'acquittement, comme pour une transmission classique (également appelée
-\lang{``unicast''}. Une fois un ou plusieurs récepteurs identifiés grâce
-aux premiers envois de paquets en mode \lang{``anycast''}, les transmissions
-suivantes de trames peuvent se faire de façon classique \lang{``unicast''}
-suivant le mécanisme standard de ContikiMAC. Ce mode opératoire, bien
-adapté aux noeuds mobiles ne pouvant compter sur des protocoles de routage
-avancés pour découvrir leur entourage, peut être illustré grâce au schéma
-montré en figure \vref{FigMContikiMAC} (où un noeud mobile communique
-avec un noeud fixe parmi deux présents dans un WSN donné).
+\lang{``unicast''}). Une fois un ou plusieurs récepteurs identifiés grâce
+aux premiers envois de trames en mode \lang{``anycast''}, les transmissions
+suivantes de trames de données peuvent se faire en mode \lang{``unicast''}
+classique suivant le mécanisme standard de ContikiMAC. Ce mode opératoire,
+bien adapté aux noeuds mobiles ne pouvant compter sur des protocoles de
+routage avancés pour découvrir leur entourage, peut être illustré grâce
+au schéma montré en figure \vref{FigMContikiMAC} (où un noeud mobile
+communique avec un noeud fixe parmi deux présents dans un WSN donné).
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=10.75cm]{images/ch3-m-contikimac.png}
 \flcaption{Fonctionnement du protocole avancé M-ContikiMAC, optimisé pour
-les noeuds mobiles des WSN. (D'après \cite{ME-ContikiMAC})}
+les noeuds mobiles des WSN. (Source~: \cite{ME-ContikiMAC})}
 \label{FigMContikiMAC}
 \end{figure}
 
 \medskip
 
-Sur la base de M-ContikiMAC, la même équipe a alors ensuite développé
-\nom{ME-ContikiMAC}. Ce dernier protocole a notamment été conçu pour mieux
-gérer les problèmes liés à la duplication des paquets et à l'optimisation
-des délais de transmission, par rapport à M-ContikiMAC. Pour ce faire,
+Sur la base de M-ContikiMAC, la même équipe a par la suite développé
+\nom{ME-ContikiMAC}. Ce dernier protocole a été conçu pour mieux
+gérer, par rapport à M-ContikiMAC, les problèmes liés à la duplication
+des trames et à l'optimisation des délais de transmission. Pour ce faire,
 ME-ContikiMAC envoie désormais en \lang{``anycast''}, pour chercher
 des récepteurs et établir des <<~connexions~>>, non plus des trames
-de données (comme dans ContikiMAC), mais des trames de contrôle, dont
-l'émission est maintenue même en cas de collision au niveau des paquets
-d'acquittement, jusqu'à la réception d'un paquet d'acquittement correct.
+de données (comme dans M-ContikiMAC), mais des trames de contrôle, dont
+l'émission est maintenue même en cas de collision au niveau des trames
+d'acquittement, jusqu'à la réception d'une trame d'acquittement correcte.
 L'envoi des trames de données se fait ensuite uniquement en
 \lang{``unicast''}, jusqu'à la fin de la transmission ou la <<~perte
 de connexion~>> (par exemple quand le noeud mobile n'est plus à portée).
 
 Le fonctionnement de ME-ContikiMAC peut être illustré par la figure
 \vref{FigMEContikiMAC}. On y voit notamment la façon dont ce protocole
-gère les collisions et la déduplications de paquets, et ce avec
+gère les collisions au niveau des trames d'acquittement, et ce avec
 un noeud mobile communicant avec trois noeuds fixes.
 
 \begin{figure}[!hbt]
 \centering
 \includegraphics[width=12.75cm]{images/ch3-me-contikimac.png}
 \flcaption{Fonctionnement du protocole avancé ME-ContikiMAC.
-(D'après \cite{ME-ContikiMAC})}
+(Source~: \cite{ME-ContikiMAC})}
 \label{FigMEContikiMAC}
 \end{figure}
 
-Là encore, l'article \cite{ME-ContikiMAC} montre des améliorations
-sensibles au point de vue de la qualité de service (déduplication de
-paquets, occupation du médium radio, delais de transmissions réduits)
-et de la consommation énergétique. ME-ContikiMAC a notamment montré,
-dans ladite publication, que ces améliorations étaient sensibles vis-à-vis
-de WSN ayant des noeuds statiques mais aussi et surtout des noeuds
-mobiles. (Notons toutefois que cet article ne s'appuie, contrairement
-aux publications sur T-AAD, que sur des simulations effectuées sous
-Cooja).
+\cite{ME-ContikiMAC} met en évidence de nettes améliorations
+du point de vue de la qualité de service (déduplication de paquets,
+occupation du médium radio et délais de transmission réduits) et
+de la consommation énergétique. Ladite publication montre en
+particulier que les améliorations apportées par ME-ContikiMAC sont
+sensibles au niveau des WSN ayant des noeuds statiques mais aussi
+et surtout des noeuds mobiles. (Notons toutefois que cet article
+ne s'appuie, contrairement aux publications sur T-AAD, que sur
+des simulations effectuées sous Cooja.)
 
 \bigskip
 
-On voit donc au final que de nombreuses équipes de recherches continuent
-à explorer continuellement et activement de nombreuses pistes pour
+On voit donc au final que de nombreuses équipes de recherche continuent
+à explorer activement et sans relâche de nombreuses pistes pour
 améliorer les couches MAC~/ RDC des piles protocolaires des WSN,
 que ce soit par la conception de protocoles entièrement nouveaux~---
 tels CoSenS~/ S-CoSenS et iQueue-MAC~--- ou par l'invention de mécanismes
@@ -1709,11 +1709,11 @@ incluent donc une couche MAC qui, par définition, est intimement liée
 au reste de la pile, et n'est \lang{a priori} pas conçue pour être
 implantée de façon indépendante.
 
-Un exemple d'une telle pile protocolaire complète, basé sur la couche
-physique du standard IEEE 802.15.4 (sur la bande à 2,4~GHz uniquement)
+Un exemple d'une telle pile protocolaire complète, basée sur la couche
+physique du standard IEEE 802.15.4 (sur la bande 2,4~GHz uniquement),
 est OCARI (Optimisation des Communications Ad-hoc pour les Réseaux
 Industriels) \cite{OCARI}. Comme son nom l'indique, il s'agit ici d'un
-effort de rechcerche appliquée~--- mené par une alliance regroupant
+effort de recherche appliquée~--- mené par une alliance regroupant
 différents acteurs majeurs, industriels et académiques~--- destiné à
 fournir une pile réseau à très haute fiabilité, afin d'offrir une
 solution pour des applications critiques comme celles liées aux
@@ -1721,7 +1721,7 @@ centrales nucléaires ou aux navires militaires.
 
 De cet effort est née une pile protocolaire complète, allant de la couche
 MAC~/ RDC (niveau 2 OSI) aux API destinées à la programmation d'applications
-(assimilable au niveau 7 OSI). Compte-tenu du sujet de notre thèse, nous
+(assimilables au niveau 7 OSI). Compte-tenu du sujet de notre thèse, nous
 nous cantonnerons à l'étude de la couche MAC, nommée \nom{MaCARI}, bien que
 celle-ci soit étroitement liée aux autres couches d'OCARI. Cette couche
 est notamment prévue pour faciliter les opérations de routage, en
@@ -1738,16 +1738,14 @@ représentée sur la figure \vref{FigMaCARICycle}.
 \label{FigMaCARICycle}
 \end{figure}
 
-\smallskip
-
 Ces trois périodes sont~:
 \begin{enumerate}
 \item une période de synchronisation des différents noeuds ($T_0$--$T_1$),
 en gris sur la figure \vref{FigMaCARICycle}~;
 \item une période de transmissions pré-déterminées ($T_1$--$T_2$), basée
 sur une méthode TDMA optimisée, assurant une réservation de \lang{slots}
-dépourvue de toute interférence pour toute transmission, en jaune sur
-la  figure \vref{FigMaCARICycle}~;
+évitant toute interférence pour toute transmission, en jaune sur la
+figure \vref{FigMaCARICycle}~;
 \item une période de transmissions <<~spontanées~>> ($T_2$--$T_3$), basée
 sur la contention (CSMA/CA slottée), en vert sur la figure
 \vref{FigMaCARICycle}.
@@ -1756,23 +1754,25 @@ sur la contention (CSMA/CA slottée), en vert sur la figure
 Le protocole MaCARI est véritablement un protocole hybride, puisque l'on
 peut le considérer à la fois comme un protocole synchrone, un protocole basé
 sur le multiplexage temporel (TDMA), et un protocole basé sur la contention.
-Il s'agit enfin d'un protocole MAC~/ RDC, l'émetteur~/ récepteur radio
-pouvant être mis hors fonction pour économiser l'énergie durant la période
-<<~déterministe~>> quand un noeud n'a pas à communiquer durant son
-\lang{slot} assigné.
+Il s'agit en outre d'un protocole MAC~/ RDC complet, l'émetteur~/ récepteur
+radio d'un noeud donné pouvant être mis hors fonction pour économiser
+l'énergie durant la période <<~déterministe~>> quand ce noeud n'a pas
+à communiquer durant son \lang{slot} assigné.
 
 Si le protocole MaCARI est, comme on le voit, très performant et ingénieux,
 son intégration étroite avec le reste de la pile OCARI~--- le rendant
-délicat à porter et utiliser indépendamment de cette pile~--- et son
+délicat à porter et à utiliser indépendamment de cette pile~--- et son
 orientation très industrielle ne lui ont jusqu'ici pas permis d'apparaître
-dans des OS spécialisés pour WSN comme Contiki~; de plus, la présence d'une
-pile fournissant un ensemble très complet de fonctionnalités, pouvant
-presque faire doublon avec un système d'exploitation proprement dit,
-rend un tel portage encore plus difficile.
+dans des OS pour WSN comme Contiki. De plus, la présence d'une pile
+fournissant un ensemble très complet de fonctionnalités, pouvant presque
+faire doublon avec un système d'exploitation proprement dit,
+rend un tel portage encore plus sujet à caution.
 
-Rappelons enfin que les piles protocolaires complètes étant au-delà du sujet
-de la présente thèse, nous n'avons au cours de celle-ci effectué aucun
-travail avec ce protocole.
+\smallskip
+
+Rappelons enfin que, les piles protocolaires complètes étant au-delà
+du sujet de la présente thèse, nous n'avons au cours de cette dernière
+effectué aucun travail avec OCARI ou MaCARI.
 
 
 \subsection{Discussion~: les protocoles MAC~/ RDC}
@@ -1815,7 +1815,7 @@ Pour le moment, et malgré tous ces développements, les protocoles
 asynchrones LPL restent, du moins dans le milieu académique, les plus
 couramment utilisés. Ils sont en effet bien adaptés aux trafics réseaux
 modérés, ce qui correspond au mode de fonctionnement de la majorité des
-réseaux de capteurs sans-fil à l'heure actuelle, et permettent à la fois
+réseaux de capteurs sans-fil à l'heure actuelle, et permettent également
 une bonne économie des ressources, tant du point de vue énergétique
 (économie de la batterie des noeuds) que matériel (simplicité
 d'implantation, d'où une faible occupation de la mémoire~--- d'une
@@ -1826,8 +1826,8 @@ sans-fil (comme nous allons le voir dans la section \vref{SecOSWSN})
 tend actuellement à devenir le standard de fait dans les différents
 travaux de recherche dans le domaine.
 
-Toutefois, l'adoption de l'amendement 802.15.4e au standard IEEE,
-avec sa couche MAC évoluée (mécanisme TSCH) et le développement d'une
+Toutefois, l'adoption de l'amendement 802.15.4e du standard IEEE,
+avec sa couche MAC évoluée (mécanisme TSCH), et le développement d'une
 pile réseau complète sur cette base (projet 6TiSCH \cite{6TiSCH}
 \cite{6TiSCHbis} \cite{6TiSCHter}) pourraient prochainement changer
 la donne, et imposer un nouveau standard notamment dans les réseaux
@@ -2758,11 +2758,11 @@ dans le cadre des réseaux de capteurs sans-fil.}
 
 Ainsi, si Contiki est à l'heure actuelle la référence en matière de
 système pour réseaux de capteurs sans-fil, les récentes avancées apportées
-par l'amendement 802.15.4e au protocole IEEE pourraient faire évoluer le
+par l'amendement 802.15.4e du protocole IEEE pourraient faire évoluer le
 paysage.
 
-En effet, l'absence de fonctionnalités temps-réel de Contiki rendent
-impossibles les synchronisations temporelles~--- plus exactement~:
+En effet, les insuffisances des fonctionnalités temps-réel de Contiki
+rendent très délicates les synchronisations temporelles~--- plus exactement~:
 le déclenchement d'évènements à des moments extrêmement précis, jusqu'à
 quelques dizaines de microsecondes près~--- nécessaires au caractère
 \lang{``slotté''} (TDMA et même FDMA) de la nouvelle couche MAC étendue.
@@ -2796,7 +2796,7 @@ des protocoles MAC avancés permettant d'optimiser à la fois la qualité
 de service <<~fonctionnelle~>> et la consommation d'énergie (voir
 \vref{SubsecProtoMACavances}), nous avons besoin de fonctionnalités
 temps-réel permettant de réagir efficacement aux évènements, notamment
-temporels~--- en d'autres termes, respecter des délais très stricts~---
+temporels~--- en d'autres termes, respecter des délais très stricts~---,
 ces protocoles avancés nécessitant une synchronisation précise entre
 les différents noeuds communicants, et souvent un recours au multiplexage
 temporel (TDMA), comme iQueue-MAC, ou même la couche MAC du standard
