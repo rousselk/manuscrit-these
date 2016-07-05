@@ -1,0 +1,270 @@
+\pdfobjcompresslevel 0
+\documentclass[11pt,a4paper,twoside]{thesul}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage[french]{varioref}
+\usepackage{apalite}
+\usepackage[pdftex]{tulhypref}
+
+\hypersetup{colorlinks,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ThesisUL
+\ThesisTitle{Évaluation et amélioration des plates-formes logicielles
+             pour réseaux de capteurs sans-fil, pour optimiser la
+             qualité de service et l'énergie}
+\ThesisAuthor{Kévin Roussel}
+\ThesisDomain{mention informatique}
+\ThesisDate{3 juin 2016}
+\ThesisVersion{3.1416}{30 juin 2016}
+\SetLab{INRIA Nancy Grand-Est}
+\AddLab{Laboratoire Lorrain de Recherche en Informatique et
+        ses Applications~--- UMR 7503}
+
+%% JURY DE THÈSE
+\NewJuryCategory{Invite}{\textit{Invit\'e~:}}{\textit{Invit\'e~:}}
+\President{François Charpillet    & Directeur de Recherches INRIA}
+\Rapporteurs{Thierry Val          & Professeur des Universités \\
+             Thomas No\"el        & Professeur des Universités}
+\Examinateurs{Thomas Watteyne     & Chargé de Recherches INRIA \\
+              Emmanuel Baccelli   & Chargé de Recherches INRIA}
+\Encadrants{Ye-Qiong Song         & Professeur des Universités \\
+            Olivier Zendra        & Chargé de Recherches INRIA}
+\Invite{Jean-Philippe Blanchard   & Responsable du Pôle Innovation \\
+                                  & \ du Crédit Agricole S.A.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% COMMANDES UTILES AU COURS DU CORPS DE TEXTE
+
+\newcommand{\lang}[1]{\textit{#1}}
+\newcommand{\nom}[1]{\textbf{#1}}
+\renewcommand{\emph}[1]{\textbf{\textit{#1}}}
+\newcommand{\flcaption}[1]{\caption{\textsl{#1}}}
+
+\renewcommand{\Frlabelitemi}{---}
+\renewcommand{\Frlabelitemii}{\textgreater}
+\renewcommand{\Frlabelitemiii}{*}
+
+%% COMPTAGE DES CHAPITRES, SECTIONS, ETC.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+%% MISE EN PAGE
+\geometry{
+  a4paper,
+  total={210mm,297mm},
+  top=35mm,
+  left=28mm,
+  bottom=49mm,
+  right=42mm
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% PAGE DE TITRE
+
+\begin{document}
+
+\SetBinding{5mm}
+\MakeThesisTitlePage
+
+%%% NE PAS ENCOMBRER LES PAGES VIDES
+
+\EmptyPageStyle{empty}
+
+%%% HOMMAGE / DÉDICACE DE LA THÈSE
+
+\begin{ThesisDedication}
+\`A mes parents,\\
+\`A mes grand-parents.\\
+\end{ThesisDedication}
+
+%%% REMERCIEMENTS
+\include{these-KR-remerciements}
+
+%%% ENTÊTE DU DOCUMENT
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% CORPS DU DOCUMENT
+
+\mainmatter
+
+%%% CHAPITRE 1 : INTRODUCTION
+\include{these-KR-ch1-intro}
+
+%%% CHAPITRE 2 : CONTEXTE ET PROBLÉMATIQUE
+\include{these-KR-ch2-ctx-prob}
+
+%%% CHAPITRE 3 : ÉTAT DE L'ART
+\include{these-KR-ch3-etat-art}
+
+%%% CHAPITRE 4 : PLATES-FORMES LOGICIELLES : ÉVALUATION ET AMÉLIORATIONS
+\include{these-KR-ch4-pf-logicielles}
+
+%%% CHAPITRE 5 : ÉVALUATION ET COMPARAISON DE PROTOCOLES MAC / RDC
+\include{these-KR-ch5-protocoles-mac-rdc}
+
+%%% CHAPITRE 6 : VALIDATION
+\include{these-KR-ch6-validation}
+
+%%% CHAPITRE 7 : CONCLUSION ET PERSPECTIVES
+\include{these-KR-ch7-concl-persp}
+
+
+\appendix
+
+%%% PUBLICATIONS ET RÉALISATIONS
+\include{these-KR-pub-real}
+
+
+%%% RÉFÉRENCES BIBLIOGRAPHIQUES
+\bibliographystyle{apalike}
+\bibliography{these-KR-biblio}
+
+
+%%% GLOSSAIRE
+\include{these-KR-glossaire}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% RÉSUMÉS
+
+\begin{ThesisAbstract}
+
+\footnotesize
+
+\vspace{-2cm}
+
+ \hrule
+
+  \begin{FrenchAbstract}
+
+  Dans le domaine des réseaux de capteurs sans-fil (dits <<~WSN~>>), les
+  piles réseau spécialisées constituent un domaine de recherche très actif
+  depuis maintenant de nombreuses années. Toutefois, beaucoup de ces études,
+  notamment concernant les couches basses de ces piles réseau, n'ont pas
+  dépassé le stade de la théorie. Leurs implantations n'ont sauf exception
+  pas fait l'objet d'efforts poussés ou systématiques, surtout dans le cadre
+  des systèmes d'exploitation spécialisés. Nous nous proposons donc, dans
+  cette thèse, de nous focaliser sur l'analyse des interactions entre les
+  protocoles des couches basses et les plates-formes logicielles dédiées,
+  et de les optimiser, notamment au niveau de l'implantation.
+
+  Nous passons d'abord en revue et évaluons les différents systèmes
+  d'exploitation spécialisés, et choisissons celui offrant les
+  fonctionnalités, notamment temps-réel, que nous estimons nécessaires
+  pour implanter des protocoles MAC~/ RDC novateurs et performants.
+
+  Nous entreprenons ensuite un effort d'étude, d'amélioration et
+  d'optimisation de ces couches basses des piles spécialisées, et montrons,
+  avec une implantation concrète d'un de nos protocoles MAC~/ RDC avancés,
+  que nous pouvons amener des progrès notables dans la qualité de service
+  (QdS) des WSN, notamment avec un trafic réseau intense.
+
+  Nous examinons en outre des inexactitudes inattendues dans les
+  simulations~/ émulations effectuées par Cooja~/ MSPSim, et analysons
+  les problèmes de fiabilité posés par l'utilisation de cet outil pour
+  effectuer des évaluations de performances, notamment temporelles, de WSN.
+
+  Nous proposons enfin de nouvelles pistes pour de futures améliorations et
+  optimisations de ces couches basses des piles réseau spécialisées, afin
+  d'améliorer encore la fiabilité, les performances et la consommation
+  énergétique des WSN.
+
+  \KeyWords{réseaux de capteurs sans-fil (WSN),
+            systèmes d'exploitation,
+            temps-réel,
+            protocoles MAC,
+            protocoles RDC,
+            \lang{``Radio Duty Cycle''},
+            qualité de service (QdS),
+            énergie}
+
+  \end{FrenchAbstract}
+
+ \hrule
+
+  \begin{EnglishAbstract}
+
+  In the field of wireless sensors networks (WSN), specialized network 
+  stacks have been a very active research field for many years.
+  However, most of this research, especially on lower layers of the network
+  stacks, did not go beyond theory. Their implementations have generally not
+  been the subject of deep or systematic effort, especially within the
+  framework of dedicated operating systems. We thus propose, in this
+  thesis, to focus on interaction analysis between lower layers' protocols
+  and dedicated software platforms, and to optimize them, especially at
+  the implementation level.
+
+  We first review and evaluate the various dedicated operating
+  systems, and choose the one offering the necessary features
+  to implement efficient and innovative MAC/RDC protocols.
+
+  We then study, improve and optimize these lower layers of specialized
+  stacks, and show, with an actual implementation of one of our advanced
+  MAC/RDC protocols, that we can bring significant improvements in the
+  quality of service (QoS) of WSNs, especially under heavy network traffic.
+
+  We also report inaccuracies in Cooja/MSPSim simulations/emulations,
+  and analyze the reliability issues caused by the use of this tool for
+  performing evaluations (especially time-related) of WSNs.
+
+  We finally propose some new leads for future enhancements and
+  optimizations of the lower layers of these specialized network stacks,
+  in order to further improve the liability, performances and energy
+  consumption of WSNs.
+
+  \KeyWords{wireless sensor networks (WSN),
+            operating systems,
+            real-time,
+            MAC protocols,
+            Radio Duty Cycle protocols,
+            Quality of Service (QoS),
+            energy}
+
+  \end{EnglishAbstract}
+
+ \hrule
+
+\end{ThesisAbstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% FIN DU DOCUMENT
+\end{document}
+

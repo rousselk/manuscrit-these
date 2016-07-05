@@ -8,5 +8,5 @@ rm *.lof
 rm *.log
 rm *.lot
 rm *.toc
-# rm *.cb*
+rm *.out
 
